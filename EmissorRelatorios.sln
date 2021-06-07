@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmissorRelatorios", "EmissorRelatorios\EmissorRelatorios.csproj", "{567A252D-816E-4E69-8A37-342728C89980}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Emissor Relatorios Setup", "Setup\Emissor Relatorios Setup\Emissor Relatorios Setup.vdproj", "{E8388F06-E5E4-4B07-BBD8-F644CDE5137C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{567A252D-816E-4E69-8A37-342728C89980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567A252D-816E-4E69-8A37-342728C89980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567A252D-816E-4E69-8A37-342728C89980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567A252D-816E-4E69-8A37-342728C89980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8388F06-E5E4-4B07-BBD8-F644CDE5137C}.Debug|Any CPU.ActiveCfg = Debug
+		{E8388F06-E5E4-4B07-BBD8-F644CDE5137C}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F6D43E2-70C7-461C-AF2A-64BFD4920146}
+	EndGlobalSection
+EndGlobal

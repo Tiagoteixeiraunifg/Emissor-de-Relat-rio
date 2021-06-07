@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetEtiquetas" targetNamespace="http://tempuri.org/DataSetEtiquetas.xsd" xmlns:mstns="http://tempuri.org/DataSetEtiquetas.xsd" xmlns="http://tempuri.org/DataSetEtiquetas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetEtiquetas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetEtiquetas" msprop:Generator_UserDSName="DataSetEtiquetas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="_x0030_" msprop:Generator_TableClassName="_0DataTable" msprop:Generator_TableVarName="table0" msprop:Generator_TablePropName="_0" msprop:Generator_RowDeletingName="_0RowDeleting" msprop:Generator_RowChangingName="_0RowChanging" msprop:Generator_RowEvHandlerName="_0RowChangeEventHandler" msprop:Generator_RowDeletedName="_0RowDeleted" msprop:Generator_UserTableName="0" msprop:Generator_RowChangedName="_0RowChanged" msprop:Generator_RowEvArgName="_0RowChangeEvent" msprop:Generator_RowClassName="_0Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PRODUTO" msprop:Generator_ColumnVarNameInTable="columnID_PRODUTO" msprop:Generator_ColumnPropNameInRow="ID_PRODUTO" msprop:Generator_ColumnPropNameInTable="ID_PRODUTOColumn" msprop:Generator_UserColumnName="ID_PRODUTO" type="xs:int" minOccurs="0" />
+              <xs:element name="GTIN" msprop:Generator_ColumnVarNameInTable="columnGTIN" msprop:Generator_ColumnPropNameInRow="GTIN" msprop:Generator_ColumnPropNameInTable="GTINColumn" msprop:Generator_UserColumnName="GTIN" type="xs:string" minOccurs="0" />
+              <xs:element name="PRODUTO" msprop:Generator_ColumnVarNameInTable="columnPRODUTO" msprop:Generator_ColumnPropNameInRow="PRODUTO" msprop:Generator_ColumnPropNameInTable="PRODUTOColumn" msprop:Generator_UserColumnName="PRODUTO" type="xs:string" minOccurs="0" />
+              <xs:element name="VALOR_VENDA" msprop:Generator_ColumnVarNameInTable="columnVALOR_VENDA" msprop:Generator_ColumnPropNameInRow="VALOR_VENDA" msprop:Generator_ColumnPropNameInTable="VALOR_VENDAColumn" msprop:Generator_UserColumnName="VALOR_VENDA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VALOR_ATACADO" msprop:Generator_ColumnVarNameInTable="columnVALOR_ATACADO" msprop:Generator_ColumnPropNameInRow="VALOR_ATACADO" msprop:Generator_ColumnPropNameInTable="VALOR_ATACADOColumn" msprop:Generator_UserColumnName="VALOR_ATACADO" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
