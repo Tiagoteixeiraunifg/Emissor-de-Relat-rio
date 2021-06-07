@@ -64,6 +64,7 @@
             this.rdbProdVendDetGrupo = new System.Windows.Forms.RadioButton();
             this.rbdFechamentoCxDia = new System.Windows.Forms.RadioButton();
             this.rbdFechamentoCx = new System.Windows.Forms.RadioButton();
+            this.rbdFechamentoCxMeioPg = new System.Windows.Forms.RadioButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -188,6 +189,7 @@
             this.cboGrupo.Name = "cboGrupo";
             this.cboGrupo.Size = new System.Drawing.Size(269, 28);
             this.cboGrupo.TabIndex = 1;
+            this.cboGrupo.Validated += new System.EventHandler(this.cboGrupo_Validated);
             // 
             // groupBox4
             // 
@@ -332,6 +334,7 @@
             this.flowLayoutPanel1.Controls.Add(this.rdbProdVendDetGrupo);
             this.flowLayoutPanel1.Controls.Add(this.rbdFechamentoCxDia);
             this.flowLayoutPanel1.Controls.Add(this.rbdFechamentoCx);
+            this.flowLayoutPanel1.Controls.Add(this.rbdFechamentoCxMeioPg);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 25);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(758, 149);
@@ -518,6 +521,21 @@
             this.rbdFechamentoCx.UseVisualStyleBackColor = true;
             this.rbdFechamentoCx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rbdFechamentoCx_MouseClick);
             // 
+            // rbdFechamentoCxMeioPg
+            // 
+            this.rbdFechamentoCxMeioPg.AutoSize = true;
+            this.rbdFechamentoCxMeioPg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbdFechamentoCxMeioPg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbdFechamentoCxMeioPg.Location = new System.Drawing.Point(3, 363);
+            this.rbdFechamentoCxMeioPg.Name = "rbdFechamentoCxMeioPg";
+            this.rbdFechamentoCxMeioPg.Size = new System.Drawing.Size(621, 24);
+            this.rbdFechamentoCxMeioPg.TabIndex = 12;
+            this.rbdFechamentoCxMeioPg.TabStop = true;
+            this.rbdFechamentoCxMeioPg.Text = "Movimento de Caixa Resumido Agrupado Movimento - Meio de Pagamento";
+            this.ToolTip.SetToolTip(this.rbdFechamentoCxMeioPg, "Seleciono o periodo para saber os resultados");
+            this.rbdFechamentoCxMeioPg.UseVisualStyleBackColor = true;
+            this.rbdFechamentoCxMeioPg.Click += new System.EventHandler(this.rbdFechamentoCxMeioPg_Click);
+            // 
             // frmSaida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,7 +559,6 @@
             this.Name = "frmSaida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatorios Saidas";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmSaida_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -594,5 +611,6 @@
         private System.Windows.Forms.RadioButton rdbProdVendDetGrupo;
         private System.Windows.Forms.RadioButton rbdFechamentoCxDia;
         private System.Windows.Forms.RadioButton rbdFechamentoCx;
+        private System.Windows.Forms.RadioButton rbdFechamentoCxMeioPg;
     }
 }

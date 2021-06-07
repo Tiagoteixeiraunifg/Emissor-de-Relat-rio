@@ -45,12 +45,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1F0D52561AB0738670539BDFAC28D312"
-        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_204B995BBB704C62A80EF5C594255412"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,8 +87,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_48A4E564C556989201E0346ACE40B148"
-        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmKey" = "8:_4C8451A8210F4DCDAACF1C430695B253"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -117,6 +111,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5EC0449003962B7C3656DECD25638EDE"
+        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6319A87B33B34448ADDAE1133C94D995"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -124,12 +124,6 @@
         "Entry"
         {
         "MsmKey" = "8:_6762AC833D914FC9AF5E862C605139A8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8745A40508964F5281F22FE6F80ABBF0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -147,6 +141,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8BAFBDAB5D21648974EA3CF83474EDB0"
+        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8BAFBDAB5D21648974EA3CF83474EDB0"
+        "OwnerKey" = "8:_5EC0449003962B7C3656DECD25638EDE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8BAFBDAB5D21648974EA3CF83474EDB0"
+        "OwnerKey" = "8:_AD84E2CF5F66CF5FD38F7A1B925E92F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8F38E90DCAEF426E8DFA0504FA8E5C53"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -155,6 +167,12 @@
         {
         "MsmKey" = "8:_91461B900D624921A3CEEA1039DB4C96"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_950E40017C3E946EB364F46D4736210D"
+        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -171,38 +189,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AE33A4FF01F81FA8D010626AD1458EC0"
+        "MsmKey" = "8:_AD84E2CF5F66CF5FD38F7A1B925E92F9"
         "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AE33A4FF01F81FA8D010626AD1458EC0"
-        "OwnerKey" = "8:_C14F20FA19D16448474EC1DA58589658"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BD98CCE9BFFFFF2462C837B9474F22EE"
         "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_BD98CCE9BFFFFF2462C837B9474F22EE"
-        "OwnerKey" = "8:_1F0D52561AB0738670539BDFAC28D312"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BD98CCE9BFFFFF2462C837B9474F22EE"
-        "OwnerKey" = "8:_48A4E564C556989201E0346ACE40B148"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C14F20FA19D16448474EC1DA58589658"
-        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmKey" = "8:_AE33A4FF01F81FA8D010626AD1458EC0"
+        "OwnerKey" = "8:_950E40017C3E946EB364F46D4736210D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -225,7 +225,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D658CA569DEC4A1CBD9EA988C77A7408"
+        "MsmKey" = "8:_E656838318574EC78EF1E920392FBF86"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -286,25 +286,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1F0D52561AB0738670539BDFAC28D312"
+        "OwnerKey" = "8:_5EC0449003962B7C3656DECD25638EDE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_48A4E564C556989201E0346ACE40B148"
+        "OwnerKey" = "8:_AD84E2CF5F66CF5FD38F7A1B925E92F9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BD98CCE9BFFFFF2462C837B9474F22EE"
+        "OwnerKey" = "8:_8BAFBDAB5D21648974EA3CF83474EDB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C14F20FA19D16448474EC1DA58589658"
+        "OwnerKey" = "8:_950E40017C3E946EB364F46D4736210D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -570,37 +570,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1F0D52561AB0738670539BDFAC28D312"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FirebirdSql.Web.Providers, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3d06a02581b682f8, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_1F0D52561AB0738670539BDFAC28D312"
-                    {
-                    "Name" = "8:FirebirdSql.Web.Providers.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FirebirdSql.Web.Providers.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_204B995BBB704C62A80EF5C594255412"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\VendasVendedorItemDetTodosItemClientesFull.rpt"
@@ -721,23 +690,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_48A4E564C556989201E0346ACE40B148"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C8451A8210F4DCDAACF1C430695B253"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.UnitTests, Version=2.0.0.27396, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_48A4E564C556989201E0346ACE40B148"
-                    {
-                    "Name" = "8:FirebirdSql.Data.UnitTests.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FirebirdSql.Data.UnitTests.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\..\\source\\repos\\CRRuntime_64bit_13_0_27.MSI"
+            "TargetName" = "8:CRRuntime_64bit_13_0_27.MSI"
             "Tag" = "8:"
-            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Folder" = "8:_7E201715210443AA85B1ED69591F2831"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -749,7 +707,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_53718D4C610441CB90F6B6CDA0D9C7E6"
@@ -823,6 +781,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5EC0449003962B7C3656DECD25638EDE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FirebirdSql.Web.Providers, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3d06a02581b682f8, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5EC0449003962B7C3656DECD25638EDE"
+                    {
+                    "Name" = "8:FirebirdSql.Web.Providers.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FirebirdSql.Web.Providers.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6319A87B33B34448ADDAE1133C94D995"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\Compras1.rpt"
@@ -849,26 +838,6 @@
             "TargetName" = "8:VendasVendedor.rpt"
             "Tag" = "8:"
             "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8745A40508964F5281F22FE6F80ABBF0"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\source\\repos\\CRRuntime_32bit_13_0_27.MSI"
-            "TargetName" = "8:CRRuntime_32bit_13_0_27.MSI"
-            "Tag" = "8:"
-            "Folder" = "8:_7E201715210443AA85B1ED69591F2831"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -923,6 +892,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8BAFBDAB5D21648974EA3CF83474EDB0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.FirebirdClient, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_8BAFBDAB5D21648974EA3CF83474EDB0"
+                    {
+                    "Name" = "8:FirebirdSql.Data.FirebirdClient.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FirebirdSql.Data.FirebirdClient.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F38E90DCAEF426E8DFA0504FA8E5C53"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\VendasVendedorItemDetGrupo.rpt"
@@ -961,6 +961,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_950E40017C3E946EB364F46D4736210D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_950E40017C3E946EB364F46D4736210D"
+                    {
+                    "Name" = "8:AxShockwaveFlashObjects.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AxShockwaveFlashObjects.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A65011E71872438F8887E5ED8C7FB764"
@@ -1003,6 +1034,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AD84E2CF5F66CF5FD38F7A1B925E92F9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.UnitTests, Version=2.0.0.27396, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_AD84E2CF5F66CF5FD38F7A1B925E92F9"
+                    {
+                    "Name" = "8:FirebirdSql.Data.UnitTests.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FirebirdSql.Data.UnitTests.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AE33A4FF01F81FA8D010626AD1458EC0"
             {
             "AssemblyRegister" = "3:1"
@@ -1031,68 +1093,6 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BD98CCE9BFFFFF2462C837B9474F22EE"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.FirebirdClient, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_BD98CCE9BFFFFF2462C837B9474F22EE"
-                    {
-                    "Name" = "8:FirebirdSql.Data.FirebirdClient.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FirebirdSql.Data.FirebirdClient.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C14F20FA19D16448474EC1DA58589658"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C14F20FA19D16448474EC1DA58589658"
-                    {
-                    "Name" = "8:AxShockwaveFlashObjects.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AxShockwaveFlashObjects.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1147,10 +1147,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D658CA569DEC4A1CBD9EA988C77A7408"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E656838318574EC78EF1E920392FBF86"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\source\\repos\\CRRuntime_64bit_13_0_27.MSI"
-            "TargetName" = "8:CRRuntime_64bit_13_0_27.MSI"
+            "SourcePath" = "8:..\\..\\..\\..\\..\\..\\..\\source\\repos\\CRRuntime_32bit_13_0_27.MSI"
+            "TargetName" = "8:CRRuntime_32bit_13_0_27.MSI"
             "Tag" = "8:"
             "Folder" = "8:_7E201715210443AA85B1ED69591F2831"
             "Condition" = "8:"
