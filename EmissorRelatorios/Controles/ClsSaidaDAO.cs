@@ -15,7 +15,7 @@ namespace EmissorRelatorios.Controles
     {
 
         private static string retorno;
-        private static bool sucesso;
+        public  bool sucesso { get; set; }
         private static string query;
        
         public DataTable GetUsuarios()
@@ -125,6 +125,7 @@ namespace EmissorRelatorios.Controles
                     con.CommandText = "select ID, GRUPO  from PRODUTOS_GRUPO order by GRUPO";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
                     da.Fill(ds);
+                    sucesso = true;
                     return ds;
                 }
 
@@ -525,10 +526,12 @@ namespace EmissorRelatorios.Controles
                 {
                     con.CommandText = "SELECT  FANTASIA, RAZ_SOCIAL, ENDER,ENDER_NUMERO,COMPLEMENTO, BAIRRO,CEP,TELEFONE,UF,MUNICIPIO, CNPJ, INSC_EST AS IE FROM EMITENTE";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
                     da.Fill(vendas.EMITENTE);
 
                     con.CommandText = query;
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
                     da.Fill(vendas.VENDAS);
                     return vendas;
 
@@ -548,6 +551,7 @@ namespace EmissorRelatorios.Controles
             
 
         }
+
         public DataSetVendas selectMovimento(string dataIni, string dataFim)
         {
             DataSetVendas vendas = new DataSetVendas();
@@ -559,10 +563,11 @@ namespace EmissorRelatorios.Controles
                 {
                     con.CommandText = "SELECT  FANTASIA, RAZ_SOCIAL, ENDER,ENDER_NUMERO,COMPLEMENTO, BAIRRO,CEP,TELEFONE,UF,MUNICIPIO, CNPJ, INSC_EST AS IE FROM EMITENTE";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
                     da.Fill(vendas.EMITENTE);
 
                     con.CommandText = " SELECT 'ENTRADA' AS MOVIMENTO, NFE.ID AS ID_VENDA, 'NFE' AS TIPO, NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE,'' AS CLIENTE," +
-                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
                         " INNER JOIN NFE_TOTAL_TIPO_PGTO NTP ON NTP.ID_NFE = NFE.ID " +
@@ -570,13 +575,13 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO " +
-                        " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
-                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '"+ dataIni + "' AND '"+ dataFim + "' " +
-                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
+                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
                         " union " +
                         "  " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAV.ID AS ID_VENDA, 'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE, '' AS CLIENTE, DAV.DATA_VENDA AS DATACUPOM, DPG.DESCRICAO AS FORMA_PGTO, " +
-                        " DTP.VALOR AS TOTAL_PGTO FROM DAV_ITENS DVI " +
+                        " DTP.VALOR AS TOTAL_PGTO, DPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM DAV_ITENS DVI " +
                         " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
                         " INNER JOIN DAV_TOTAL_TIPO_PGTO DTP ON DTP.ID_VENDA_CABECALHO = DAV.ID " +
                         " INNER JOIN DAV_FORMAS_PAGAMENTO DPG ON DPG.ID = DTP.ID_TIPO_PAGAMENTO " +
@@ -585,11 +590,11 @@ namespace EmissorRelatorios.Controles
                         " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO " +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
                         " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' " +
-                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR " +
+                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR, DPG.TIPO_PAGAMENTO " +
                         " union " +
                         "  " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO, NFCE.ID AS NROCUPOM,  USR.USUARIO,  0 AS ID_CLIENTE,'' AS CLIENTE, NFCE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO," +
-                        " NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
                         " INNER JOIN NFCE_TOTAL_TIPO_PGTO NTP ON NTP.ID_VENDA_CABECALHO = NFCE.ID" +
@@ -598,10 +603,10 @@ namespace EmissorRelatorios.Controles
                         " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
                         " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
-                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR " +
+                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, RR.ID AS ID_VENDA,'RECEBIMENTO' AS TIPO,RR.ID AS NROCUPOM,USR.USUARIO,RR.ID_CLIENTE,case when CL.RAZ_SOCIAL is null or CL.RAZ_SOCIAL = '' then CL.CLIENTE else CL.RAZ_SOCIAL end AS CLIENTE, RR.DT_BAIXA AS DATACUPOM,DFPG.DESCRICAO AS FORMA_PGTO," +
-                        " RR.VLR_BAIXA AS TOTAL_PGTO from RECIBO_RECEBER RR" +
+                        " RR.VLR_BAIXA AS TOTAL_PGTO, DFPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT from RECIBO_RECEBER RR" +
                         " INNER JOIN CLIENTES CL ON CL.ID_CLIENTE = RR.ID_CLIENTE" +
                         " INNER JOIN RECIBO_TOTAL_TIPO_PGTO RTPG ON RTPG.ID_RECIBO = RR.ID" +
                         " INNER JOIN DAV_FORMAS_PAGAMENTO DFPG ON DFPG.ID = RTPG.ID_TIPO_PAGAMENTO" +
@@ -609,35 +614,202 @@ namespace EmissorRelatorios.Controles
                         " where RR.DT_BAIXA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union" +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSG.ID AS ID_VENDA,'SANGRIA' AS TIPO,DAVSG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSG.JUSTIFICATIVA AS CLIENTE,DAVSG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO" +
+                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT" +
                         " FROM DAV_SANGRIA DAVSG " +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSG.ID_USUARIO" +
                         " WHERE DAVSG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,DAVSP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSP.JUSTIFICATIVA AS CLIENTE,DAVSP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO FROM DAV_SUPRIMENTO DAVSP" +
+                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM DAV_SUPRIMENTO DAVSP" +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSP.ID_USUARIO" +
                         " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESG.ID AS ID_VENDA,'SANGRIA' AS TIPO,NFCESG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESG.JUSTIFICATIVA AS CLIENTE,NFCESG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO FROM NFCE_SANGRIA NFCESG " +
+                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SANGRIA NFCESG " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESG.ID_USUARIO " +
                         " WHERE NFCESG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,NFCESP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESP.JUSTIFICATIVA AS CLIENTE,NFCESP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO FROM NFCE_SUPRIMENTO NFCESP " +
+                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SUPRIMENTO NFCESP " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESP.ID_USUARIO " +
-                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
-                        " UNION " +
-                        " SELECT 'SAIDA' AS MOVIMENTO, CP.ID AS ID_VENDA, 'CONTAS PAGAS' AS TIPO, CP.NRO_NF AS NROCUPOM, USR.USUARIO, FR.ID_FORNECEDOR AS ID_CLIENTE, FR.RAZ_SOCIAL AS CLIENTE, CP.DT_QUITACAO AS DATACUPOM," +
-                        " RPGTOS.DESCRICAO AS FORMA_PGTO, RCPI.VALOR_BAIXADO AS TOTAL_PGTO FROM CONTAS_PAGAR CP " +
-                        " INNER JOIN RECIBO_PAGAR_ITENS RCPI ON RCPI.ID_CONTA = CP.ID" +
-                        " INNER JOIN RECIBO_PAGAR RCP ON RCP.ID = RCPI.ID_RECIBO_BAIXA" +
-                        " INNER JOIN RECIBO_PAGAR_PGTOS RPGTOS ON RPGTOS.ID_RECIBO_BAIXA = RCP.ID" +
-                        " LEFT JOIN USUARIO USR ON USR.ID = CP.ID_OPERADOR " +
-                        " INNER JOIN FORNECEDOR FR ON FR.ID_FORNECEDOR = CP.ID_FORNECEDOR " +
-                        " WHERE CP.DT_QUITACAO BETWEEN '" + dataIni + "' AND '" + dataFim + "'";
+                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' ";// +
+                        //" UNION " +
+                        //" SELECT 'SAIDA' AS MOVIMENTO, CP.ID AS ID_VENDA, 'CONTAS PAGAS' AS TIPO, CP.NRO_NF AS NROCUPOM, USR.USUARIO, FR.ID_FORNECEDOR AS ID_CLIENTE, FR.RAZ_SOCIAL AS CLIENTE, CP.DT_QUITACAO AS DATACUPOM," +
+                        //" RPGTOS.DESCRICAO AS FORMA_PGTO, RCPI.VALOR_BAIXADO AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM CONTAS_PAGAR CP " +
+                        //" INNER JOIN RECIBO_PAGAR_ITENS RCPI ON RCPI.ID_CONTA = CP.ID" +
+                        //" INNER JOIN RECIBO_PAGAR RCP ON RCP.ID = RCPI.ID_RECIBO_BAIXA" +
+                        //" INNER JOIN RECIBO_PAGAR_PGTOS RPGTOS ON RPGTOS.ID_RECIBO_BAIXA = RCP.ID" +
+                        //" LEFT JOIN USUARIO USR ON USR.ID = CP.ID_OPERADOR " +
+                        //" INNER JOIN FORNECEDOR FR ON FR.ID_FORNECEDOR = CP.ID_FORNECEDOR " +
+                        //" WHERE CP.DT_QUITACAO BETWEEN '" + dataIni + "' AND '" + dataFim + "'";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    da.Fill(vendas.VENDAS_CAIXA);
+                    sucesso = true;
+                    return vendas;
+
+                }
+            }
+            catch (FbException e)
+            {
+                retorno = "Erro ao obter dados: " + e;
+                sucesso = false;
+                return null;
+            }
+            finally
+            {
+                cnn.desconect();
+            }
+
+
+
+        }
+
+        public DataSetVendas selectMovimento(string dataIni, string dataFim, int tipo)
+        {
+            DataSetVendas vendas = new DataSetVendas();
+            ConexaoDAO cnn = new ConexaoDAO();
+            FbDataAdapter da;
+            string sql = "";
+            switch (tipo)
+            {
+                case 0: //todos
+                    sql = "SELECT 'ENTRADA' AS MOVIMENTO, NFE.ID AS ID_VENDA, 'NFE' AS TIPO, NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE,'' AS CLIENTE," +
+                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
+                        " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                        " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
+                        " INNER JOIN NFE_TOTAL_TIPO_PGTO NTP ON NTP.ID_NFE = NFE.ID " +
+                        " INNER JOIN NFE_FORMAS_PAGAMENTO FPG ON FPG.ID = NTP.ID_TIPO_PAGAMENTO " +
+                        " LEFT JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
+                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
+                        " union " +
+                        "  " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, DAV.ID AS ID_VENDA, 'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE, '' AS CLIENTE, DAV.DATA_VENDA AS DATACUPOM, DPG.DESCRICAO AS FORMA_PGTO, " +
+                        " DTP.VALOR AS TOTAL_PGTO, DPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM DAV_ITENS DVI " +
+                        " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
+                        " INNER JOIN DAV_TOTAL_TIPO_PGTO DTP ON DTP.ID_VENDA_CABECALHO = DAV.ID " +
+                        " INNER JOIN DAV_FORMAS_PAGAMENTO DPG ON DPG.ID = DTP.ID_TIPO_PAGAMENTO " +
+                        " LEFT JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' " +
+                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR, DPG.TIPO_PAGAMENTO " +
+                        " union " +
+                        "  " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO, NFCE.ID AS NROCUPOM,  USR.USUARIO,  0 AS ID_CLIENTE,'' AS CLIENTE, NFCE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO," +
+                        " NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
+                        " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                        " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
+                        " INNER JOIN NFCE_TOTAL_TIPO_PGTO NTP ON NTP.ID_VENDA_CABECALHO = NFCE.ID" +
+                        " INNER JOIN NFCE_FORMAS_PAGAMENTO FPG ON FPG.ID = NTP.ID_TIPO_PAGAMENTO" +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
+                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
+                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, DAVSG.ID AS ID_VENDA,'SANGRIA' AS TIPO,DAVSG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSG.JUSTIFICATIVA AS CLIENTE,DAVSG.DATA_SANGRIA AS DATACUPOM," +
+                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT" +
+                        " FROM DAV_SANGRIA DAVSG " +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAVSG.ID_USUARIO" +
+                        " WHERE DAVSG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, DAVSP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,DAVSP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSP.JUSTIFICATIVA AS CLIENTE,DAVSP.DATA_SUPRIMENTO AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM DAV_SUPRIMENTO DAVSP" +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAVSP.ID_USUARIO" +
+                        " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, NFCESG.ID AS ID_VENDA,'SANGRIA' AS TIPO,NFCESG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESG.JUSTIFICATIVA AS CLIENTE,NFCESG.DATA_SANGRIA AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SANGRIA NFCESG " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCESG.ID_USUARIO " +
+                        " WHERE NFCESG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, NFCESP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,NFCESP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESP.JUSTIFICATIVA AS CLIENTE,NFCESP.DATA_SUPRIMENTO AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SUPRIMENTO NFCESP " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCESP.ID_USUARIO " +
+                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' " ;
+                    break;
+                case 1: //DAV
+                    sql = " SELECT 'ENTRADA' AS MOVIMENTO, DAV.ID AS ID_VENDA, 'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE, '' AS CLIENTE, DAV.DATA_VENDA AS DATACUPOM, DPG.DESCRICAO AS FORMA_PGTO, " +
+                        " DTP.VALOR AS TOTAL_PGTO, DPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM DAV_ITENS DVI " +
+                        " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
+                        " INNER JOIN DAV_TOTAL_TIPO_PGTO DTP ON DTP.ID_VENDA_CABECALHO = DAV.ID " +
+                        " INNER JOIN DAV_FORMAS_PAGAMENTO DPG ON DPG.ID = DTP.ID_TIPO_PAGAMENTO " +
+                        " INNER JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' " +
+                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR, DPG.TIPO_PAGAMENTO " +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, DAVSG.ID AS ID_VENDA,'SANGRIA' AS TIPO,DAVSG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSG.JUSTIFICATIVA AS CLIENTE,DAVSG.DATA_SANGRIA AS DATACUPOM," +
+                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT" +
+                        " FROM DAV_SANGRIA DAVSG " +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAVSG.ID_USUARIO" +
+                        " WHERE DAVSG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, DAVSP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,DAVSP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSP.JUSTIFICATIVA AS CLIENTE,DAVSP.DATA_SUPRIMENTO AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM DAV_SUPRIMENTO DAVSP" +
+                        " INNER JOIN USUARIO USR ON USR.ID = DAVSP.ID_USUARIO" +
+                        " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'" ;
+                    break;
+                case 2: //NFCE
+                    sql = " SELECT 'ENTRADA' AS MOVIMENTO, NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO, NFCE.ID AS NROCUPOM,  USR.USUARIO,  0 AS ID_CLIENTE,'' AS CLIENTE, NFCE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO," +
+                        " NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
+                        " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                        " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
+                        " INNER JOIN NFCE_TOTAL_TIPO_PGTO NTP ON NTP.ID_VENDA_CABECALHO = NFCE.ID" +
+                        " INNER JOIN NFCE_FORMAS_PAGAMENTO FPG ON FPG.ID = NTP.ID_TIPO_PAGAMENTO" +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
+                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
+                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR,  FPG.TIPO_PAGAMENTO " +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, NFCESG.ID AS ID_VENDA,'SANGRIA' AS TIPO,NFCESG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESG.JUSTIFICATIVA AS CLIENTE,NFCESG.DATA_SANGRIA AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SANGRIA NFCESG " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCESG.ID_USUARIO " +
+                        " WHERE NFCESG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
+                        " union " +
+                        " SELECT 'ENTRADA' AS MOVIMENTO, NFCESP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,NFCESP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESP.JUSTIFICATIVA AS CLIENTE,NFCESP.DATA_SUPRIMENTO AS DATACUPOM," +
+                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SUPRIMENTO NFCESP " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFCESP.ID_USUARIO " +
+                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' " ;
+                    break;
+                case 3: //NFE
+                    sql = "SELECT 'ENTRADA' AS MOVIMENTO, NFE.ID AS ID_VENDA, 'NFE' AS TIPO, NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE,'' AS CLIENTE," +
+                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
+                        " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                        " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
+                        " INNER JOIN NFE_TOTAL_TIPO_PGTO NTP ON NTP.ID_NFE = NFE.ID " +
+                        " INNER JOIN NFE_FORMAS_PAGAMENTO FPG ON FPG.ID = NTP.ID_TIPO_PAGAMENTO " +
+                        " LEFT JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
+                        " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
+                        " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
+                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO ";                 
+                    break;
+                default:
+                    break;
+            }
+
+            try
+            {
+                using (var con = cnn.conectar().CreateCommand())
+                {
+                    con.CommandText = "SELECT  FANTASIA, RAZ_SOCIAL, ENDER,ENDER_NUMERO,COMPLEMENTO, BAIRRO,CEP,TELEFONE,UF,MUNICIPIO, CNPJ, INSC_EST AS IE FROM EMITENTE";
+                    da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
+                    da.Fill(vendas.EMITENTE);
+
+                    con.CommandText = sql;
+                    da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
                     da.Fill(vendas.VENDAS_CAIXA);
                     return vendas;
 
@@ -657,18 +829,19 @@ namespace EmissorRelatorios.Controles
 
 
         }
-        
-        public DataSetVendas selectMovimento(string dataIni, string dataFim, int tipo)
+
+        public DataSetVendas selectMovimentoFormaPgto(string dataIni, string dataFim, int tipo, string FormasPgto)
         {
             DataSetVendas vendas = new DataSetVendas();
             ConexaoDAO cnn = new ConexaoDAO();
             FbDataAdapter da;
             string sql = "";
+            string filtro = FormasPgto.Substring(1);
             switch (tipo)
             {
                 case 0: //todos
                     sql = "SELECT 'ENTRADA' AS MOVIMENTO, NFE.ID AS ID_VENDA, 'NFE' AS TIPO, NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE,'' AS CLIENTE," +
-                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
                         " INNER JOIN NFE_TOTAL_TIPO_PGTO NTP ON NTP.ID_NFE = NFE.ID " +
@@ -676,26 +849,26 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO " +
-                        " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
-                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
-                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR " +
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND FPG.TIPO_PAGAMENTO IN ("+filtro+") " +
+                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
                         " union " +
                         "  " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAV.ID AS ID_VENDA, 'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE, '' AS CLIENTE, DAV.DATA_VENDA AS DATACUPOM, DPG.DESCRICAO AS FORMA_PGTO, " +
-                        " DTP.VALOR AS TOTAL_PGTO FROM DAV_ITENS DVI " +
+                        " DTP.VALOR AS TOTAL_PGTO, DPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM DAV_ITENS DVI " +
                         " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
                         " INNER JOIN DAV_TOTAL_TIPO_PGTO DTP ON DTP.ID_VENDA_CABECALHO = DAV.ID " +
                         " INNER JOIN DAV_FORMAS_PAGAMENTO DPG ON DPG.ID = DTP.ID_TIPO_PAGAMENTO " +
-                        " INNER JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
+                        " LEFT JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO " +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
-                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' " +
-                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR " +
+                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DPG.TIPO_PAGAMENTO IN (" + filtro + ") AND DAV.CUPOM_CANCELADO = 'N' " +
+                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR, DPG.TIPO_PAGAMENTO " +
                         " union " +
                         "  " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO, NFCE.ID AS NROCUPOM,  USR.USUARIO,  0 AS ID_CLIENTE,'' AS CLIENTE, NFCE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO," +
-                        " NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
                         " INNER JOIN NFCE_TOTAL_TIPO_PGTO NTP ON NTP.ID_VENDA_CABECALHO = NFCE.ID" +
@@ -703,33 +876,33 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
-                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
-                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR " +
+                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "'AND FPG.TIPO_PAGAMENTO IN (" + filtro + ") AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
+                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSG.ID AS ID_VENDA,'SANGRIA' AS TIPO,DAVSG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSG.JUSTIFICATIVA AS CLIENTE,DAVSG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO" +
+                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT" +
                         " FROM DAV_SANGRIA DAVSG " +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSG.ID_USUARIO" +
                         " WHERE DAVSG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,DAVSP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSP.JUSTIFICATIVA AS CLIENTE,DAVSP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO FROM DAV_SUPRIMENTO DAVSP" +
+                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM DAV_SUPRIMENTO DAVSP" +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSP.ID_USUARIO" +
                         " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESG.ID AS ID_VENDA,'SANGRIA' AS TIPO,NFCESG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESG.JUSTIFICATIVA AS CLIENTE,NFCESG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO FROM NFCE_SANGRIA NFCESG " +
+                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SANGRIA NFCESG " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESG.ID_USUARIO " +
                         " WHERE NFCESG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,NFCESP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESP.JUSTIFICATIVA AS CLIENTE,NFCESP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO FROM NFCE_SUPRIMENTO NFCESP " +
+                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SUPRIMENTO NFCESP " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESP.ID_USUARIO " +
-                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' " ;
+                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' ";
                     break;
                 case 1: //DAV
                     sql = " SELECT 'ENTRADA' AS MOVIMENTO, DAV.ID AS ID_VENDA, 'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE, '' AS CLIENTE, DAV.DATA_VENDA AS DATACUPOM, DPG.DESCRICAO AS FORMA_PGTO, " +
-                        " DTP.VALOR AS TOTAL_PGTO FROM DAV_ITENS DVI " +
+                        " DTP.VALOR AS TOTAL_PGTO, DPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM DAV_ITENS DVI " +
                         " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
                         " INNER JOIN DAV_TOTAL_TIPO_PGTO DTP ON DTP.ID_VENDA_CABECALHO = DAV.ID " +
                         " INNER JOIN DAV_FORMAS_PAGAMENTO DPG ON DPG.ID = DTP.ID_TIPO_PAGAMENTO " +
@@ -737,23 +910,23 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO " +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
-                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' " +
-                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR " +
+                        " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DPG.TIPO_PAGAMENTO IN (" + filtro + ") AND DAV.CUPOM_CANCELADO = 'N' " +
+                        " GROUP BY DAV.ID , 'DAV' , DAV.ID , USR.USUARIO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE , DAV.DATA_VENDA , DPG.DESCRICAO ,DTP.VALOR, DPG.TIPO_PAGAMENTO " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSG.ID AS ID_VENDA,'SANGRIA' AS TIPO,DAVSG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSG.JUSTIFICATIVA AS CLIENTE,DAVSG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO" +
+                        " 'DINHEIRO' AS FORMA_PGTO,-CAST(DAVSG.VALOR AS DECIMAL(18,2)) AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT" +
                         " FROM DAV_SANGRIA DAVSG " +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSG.ID_USUARIO" +
                         " WHERE DAVSG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "'" +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, DAVSP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,DAVSP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,DAVSP.JUSTIFICATIVA AS CLIENTE,DAVSP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO FROM DAV_SUPRIMENTO DAVSP" +
+                        " 'DINHEIRO'AS FORMA_PGTO,DAVSP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM DAV_SUPRIMENTO DAVSP" +
                         " INNER JOIN USUARIO USR ON USR.ID = DAVSP.ID_USUARIO" +
-                        " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'" ;
+                        " WHERE DAVSP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "'";
                     break;
                 case 2: //NFCE
                     sql = " SELECT 'ENTRADA' AS MOVIMENTO, NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO, NFCE.ID AS NROCUPOM,  USR.USUARIO,  0 AS ID_CLIENTE,'' AS CLIENTE, NFCE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO," +
-                        " NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
                         " INNER JOIN NFCE_TOTAL_TIPO_PGTO NTP ON NTP.ID_VENDA_CABECALHO = NFCE.ID" +
@@ -761,22 +934,22 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
                         " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
-                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
-                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR " +
+                        " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND FPG.TIPO_PAGAMENTO IN (" + filtro + ") AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV'" +
+                        " GROUP BY NFCE.ID , 'NFCE' ,NFCE.ID , USR.USUARIO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE , NFCE.DATA_VENDA , FPG.DESCRICAO ,NTP.VALOR,  FPG.TIPO_PAGAMENTO " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESG.ID AS ID_VENDA,'SANGRIA' AS TIPO,NFCESG.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESG.JUSTIFICATIVA AS CLIENTE,NFCESG.DATA_SANGRIA AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO FROM NFCE_SANGRIA NFCESG " +
+                        " 'DINHEIRO'AS FORMA_PGTO, -CAST(NFCESG.VALOR AS DECIMAL(18,2))AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SANGRIA NFCESG " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESG.ID_USUARIO " +
                         " WHERE NFCESG.DATA_SANGRIA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
                         " union " +
                         " SELECT 'ENTRADA' AS MOVIMENTO, NFCESP.ID AS ID_VENDA,'SUPRIMENTO' AS TIPO,NFCESP.ID AS NROCUPOM,USR.USUARIO,0 AS ID_CLIENTE,NFCESP.JUSTIFICATIVA AS CLIENTE,NFCESP.DATA_SUPRIMENTO AS DATACUPOM," +
-                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO FROM NFCE_SUPRIMENTO NFCESP " +
+                        " 'DINHEIRO'AS FORMA_PGTO,NFCESP.VALOR AS TOTAL_PGTO, 'DN' AS SIGLA_FORMA_PGT FROM NFCE_SUPRIMENTO NFCESP " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFCESP.ID_USUARIO " +
-                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' " ;
+                        " WHERE NFCESP.DATA_SUPRIMENTO BETWEEN '" + dataIni + "' AND '" + dataFim + "' ";
                     break;
                 case 3: //NFE
                     sql = "SELECT 'ENTRADA' AS MOVIMENTO, NFE.ID AS ID_VENDA, 'NFE' AS TIPO, NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, 0 AS ID_CLIENTE,'' AS CLIENTE," +
-                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO FROM PRODUTOS PROD " +
+                        " NFE.DATA_VENDA AS DATACUPOM, FPG.DESCRICAO AS FORMA_PGTO, NTP.VALOR AS TOTAL_PGTO, FPG.TIPO_PAGAMENTO AS SIGLA_FORMA_PGT FROM PRODUTOS PROD " +
                         " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
                         " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
                         " INNER JOIN NFE_TOTAL_TIPO_PGTO NTP ON NTP.ID_NFE = NFE.ID " +
@@ -784,9 +957,9 @@ namespace EmissorRelatorios.Controles
                         " LEFT JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
                         " LEFT JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
                         " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO " +
-                        " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
-                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' " +
-                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR ";                 
+                        " LEFT JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                        " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND FPG.TIPO_PAGAMENTO IN (" + filtro + ")" +
+                        " GROUP BY NFE.ID , 'NFE' ,NFE.NFE_NUMERO , USR.USUARIO, NFE.ID_CLIENTE, CLI.RAZ_SOCIAL ,  NFE.DATA_VENDA ,FPG.DESCRICAO ,NTP.VALOR, FPG.TIPO_PAGAMENTO ";
                     break;
                 default:
                     break;
@@ -798,14 +971,73 @@ namespace EmissorRelatorios.Controles
                 {
                     con.CommandText = "SELECT  FANTASIA, RAZ_SOCIAL, ENDER,ENDER_NUMERO,COMPLEMENTO, BAIRRO,CEP,TELEFONE,UF,MUNICIPIO, CNPJ, INSC_EST AS IE FROM EMITENTE";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    sucesso = true;
                     da.Fill(vendas.EMITENTE);
 
                     con.CommandText = sql;
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
                     da.Fill(vendas.VENDAS_CAIXA);
+                    sucesso = true;
                     return vendas;
 
                 }
+            }
+            catch (FbException e)
+            {
+                retorno = "Erro ao obter dados: " + e;
+                sucesso = false;
+                return null;
+            }
+            finally
+            {
+                cnn.desconect();
+            }
+
+
+
+        }
+
+        public DataSetVendas selectFormasPgto(int tipoMovimento)
+        {
+            DataSetVendas vendas = new DataSetVendas();
+            ConexaoDAO cnn = new ConexaoDAO();
+            FbDataAdapter da;
+            string sql = "";
+
+            switch (tipoMovimento)
+            {
+                case 0: //todos
+                    sql = "select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from DAV_FORMAS_PAGAMENTO where visivel = 'S'" +
+                        "union" +
+                        " select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from NFE_FORMAS_PAGAMENTO where visivel = 'S'" +
+                        " union" +
+                        " select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from NFCE_FORMAS_PAGAMENTO where visivel = 'S'";
+                    break;
+                case 1: //dav
+                    sql = "select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from DAV_FORMAS_PAGAMENTO where visivel = 'S'";
+                    break;
+                case 2: //nfce
+                    sql = "select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from NFCE_FORMAS_PAGAMENTO where visivel = 'S'";
+                    break;
+                case 3://nfe
+                    sql = "select TIPO_PAGAMENTO AS SIGLA, DESCRICAO from NFE_FORMAS_PAGAMENTO where visivel = 'S'";
+                    break;
+                default:
+                    break;
+            }
+
+            try
+            {
+                using (var con = cnn.conectar().CreateCommand())
+                {
+                    con.CommandText = sql;
+                    da = new FbDataAdapter(con.CommandText, cnn.conectar());
+                    da.Fill(vendas.FormasPgto);
+                    sucesso = true;
+                    return vendas;
+                    
+                }
+               
             }
             catch (FbException e)
             {

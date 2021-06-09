@@ -152,8 +152,7 @@ namespace EmissorRelatorios.Views
             }
             else if (funcaoDAO == 9)
             {
-                daVendas = clsSaidaDAO.selectMovimento(dataInicial.Value.ToString("yyyy/MM/dd"), dataFinal.Value.ToString("yyyy/MM/dd"), tipo);
-                frmSelecaoTipoMovMeioPg print = new frmSelecaoTipoMovMeioPg(daVendas);
+                frmSelecaoTipoMovMeioPg print = new frmSelecaoTipoMovMeioPg(dataInicial.Value, dataFinal.Value, tipo);
                 print.Show();
             }
             else if (funcaoDAO != 8 && funcaoDAO != 7)

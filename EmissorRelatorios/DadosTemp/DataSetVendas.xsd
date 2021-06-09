@@ -64,6 +64,7 @@
               <xs:element name="DATACUPOM" msprop:Generator_ColumnVarNameInTable="columnDATACUPOM" msprop:Generator_ColumnPropNameInRow="DATACUPOM" msprop:Generator_ColumnPropNameInTable="DATACUPOMColumn" msprop:Generator_UserColumnName="DATACUPOM" type="xs:dateTime" minOccurs="0" />
               <xs:element name="FORMA_PGTO" msprop:Generator_ColumnVarNameInTable="columnFORMA_PGTO" msprop:Generator_ColumnPropNameInRow="FORMA_PGTO" msprop:Generator_ColumnPropNameInTable="FORMA_PGTOColumn" msprop:Generator_UserColumnName="FORMA_PGTO" type="xs:string" minOccurs="0" />
               <xs:element name="TOTAL_PGTO" msdata:Caption="VLRTOTAL" msprop:Generator_ColumnVarNameInTable="columnTOTAL_PGTO" msprop:Generator_ColumnPropNameInRow="TOTAL_PGTO" msprop:Generator_ColumnPropNameInTable="TOTAL_PGTOColumn" msprop:Generator_UserColumnName="TOTAL_PGTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SIGLA_FORMA_PGT" msprop:Generator_ColumnVarNameInTable="columnSIGLA_FORMA_PGT" msprop:Generator_ColumnPropNameInRow="SIGLA_FORMA_PGT" msprop:Generator_ColumnPropNameInTable="SIGLA_FORMA_PGTColumn" msprop:Generator_UserColumnName="SIGLA_FORMA_PGT" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -89,6 +90,14 @@
               <xs:element name="MOVIMENTO" msprop:Generator_ColumnVarNameInTable="columnMOVIMENTO" msprop:Generator_ColumnPropNameInRow="MOVIMENTO" msprop:Generator_ColumnPropNameInTable="MOVIMENTOColumn" msprop:Generator_UserColumnName="MOVIMENTO" type="xs:string" minOccurs="0" />
               <xs:element name="ESTOQUE" msprop:Generator_ColumnVarNameInTable="columnESTOQUE" msprop:Generator_ColumnPropNameInRow="ESTOQUE" msprop:Generator_ColumnPropNameInTable="ESTOQUEColumn" msprop:Generator_UserColumnName="ESTOQUE" type="xs:string" minOccurs="0" />
               <xs:element name="SALDO" msprop:Generator_ColumnVarNameInTable="columnSALDO" msprop:Generator_ColumnPropNameInRow="SALDO" msprop:Generator_ColumnPropNameInTable="SALDOColumn" msprop:Generator_UserColumnName="SALDO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FormasPgto" msprop:Generator_TableClassName="FormasPgtoDataTable" msprop:Generator_TableVarName="tableFormasPgto" msprop:Generator_TablePropName="FormasPgto" msprop:Generator_RowDeletingName="FormasPgtoRowDeleting" msprop:Generator_RowChangingName="FormasPgtoRowChanging" msprop:Generator_RowEvHandlerName="FormasPgtoRowChangeEventHandler" msprop:Generator_RowDeletedName="FormasPgtoRowDeleted" msprop:Generator_UserTableName="FormasPgto" msprop:Generator_RowChangedName="FormasPgtoRowChanged" msprop:Generator_RowEvArgName="FormasPgtoRowChangeEvent" msprop:Generator_RowClassName="FormasPgtoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SIGLA" msprop:Generator_ColumnVarNameInTable="columnSIGLA" msprop:Generator_ColumnPropNameInRow="SIGLA" msprop:Generator_ColumnPropNameInTable="SIGLAColumn" msprop:Generator_UserColumnName="SIGLA" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRICAO" msprop:Generator_ColumnVarNameInTable="columnDESCRICAO" msprop:Generator_ColumnPropNameInRow="DESCRICAO" msprop:Generator_ColumnPropNameInTable="DESCRICAOColumn" msprop:Generator_UserColumnName="DESCRICAO" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
