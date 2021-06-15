@@ -10,7 +10,7 @@ namespace EmissorRelatorios.Views
 {
     public partial class frmSelecaoTipoMovMeioPg : Form
     {
-        private DadosTemp.DataSetVendas dsVendas;
+        private static DadosTemp.DataSetVendas dsVendas;
         private static DateTime DataInicial;
         private static DateTime DataFinal;
         private static int Tipo;
@@ -24,6 +24,8 @@ namespace EmissorRelatorios.Views
             DataFinal = DataFim;
             Tipo = TipoMovi;
             clsSaidaDAO = new ClsSaidaDAO();
+            clsUtil = new ClsUtil();
+            dsVendas = new DadosTemp.DataSetVendas();
         }
 
         private void frmSelecaoTipoMov_Load(object sender, EventArgs e)
@@ -44,6 +46,7 @@ namespace EmissorRelatorios.Views
                         var chk = new System.Windows.Forms.CheckBox();
                         chk.Name = dsVendas.FormasPgto[i].SIGLA;
                         chk.Text = dsVendas.FormasPgto[i].DESCRICAO;
+                        chk.Size = new System.Drawing.Size(139, 17);
                         flowLayoutPanel.Controls.Add(chk);
                         this.ResumeLayout(false);
                     }
@@ -76,20 +79,69 @@ namespace EmissorRelatorios.Views
             return express;
         }
 
+        private bool VerificaCkb()
+        {
+            bool cheked = false;
+            foreach (Control ctrl in flowLayoutPanel.Controls)
+            {
+                if (ctrl is CheckBox)
+                {
+                    if (((CheckBox)(ctrl)).Checked == true)
+                    {
+                        cheked = true;
+                    }
+                }
+            }
+            return cheked;
+        }
+
         private void btnCupom_Click(object sender, EventArgs e)
         {
-            string express = criarExpressao();
-            dsVendas = clsSaidaDAO.selectMovimentoFormaPgto(DataInicial.ToString("yyyy/MM/dd"), DataFinal.ToString("yyyy/MM/dd"), Tipo, express);
-            frmPrintVendas prtVnd = new frmPrintVendas(dsVendas, "FechamentoCxDiaCupom.rpt");
-            prtVnd.Show();
+            if (VerificaCkb()) {
+                string express = criarExpressao();
+                if (dsVendas.VENDAS_CAIXA.Count > 0) { dsVendas.VENDAS_CAIXA.Clear(); }
+                dsVendas = clsSaidaDAO.selectMovimentoFormaPgto(DataInicial.ToString("yyyy/MM/dd"), DataFinal.ToString("yyyy/MM/dd"), Tipo, express);
+                if (dsVendas.VENDAS_CAIXA.Count > 0)
+                {
+                    frmPrintVendas prtVnd = new frmPrintVendas(dsVendas, "FechamentoCxDiaCupom.rpt");
+                    prtVnd.Show();
+                }
+                else 
+                {
+                    clsUtil.MsgBox("Sem informações para o filtro selecionado!", MessageBoxIcon.Information);
+                }
+      
+            }
+            else
+            {
+                clsUtil.MsgBox("Sem meios de pagamento selecionados!", MessageBoxIcon.Information);
+            }
+
         }
 
         private void btnFolhaA4_Click(object sender, EventArgs e)
         {
-            string express = criarExpressao();
-            dsVendas = clsSaidaDAO.selectMovimentoFormaPgto(DataInicial.ToString("yyyy/MM/dd"), DataFinal.ToString("yyyy/MM/dd"), Tipo, express);
-            frmPrintVendas prtVnd = new frmPrintVendas(dsVendas, "FechamentoCxDiaA4.rpt");
-            prtVnd.Show();
+            if (VerificaCkb())
+            {
+                string express = criarExpressao();
+                if (dsVendas.VENDAS_CAIXA.Count > 0) { dsVendas.VENDAS_CAIXA.Clear(); }
+                dsVendas = clsSaidaDAO.selectMovimentoFormaPgto(DataInicial.ToString("yyyy/MM/dd"), DataFinal.ToString("yyyy/MM/dd"), Tipo, express);
+                if (dsVendas.VENDAS_CAIXA.Count > 0)
+                {
+                    frmPrintVendas prtVnd = new frmPrintVendas(dsVendas, "FechamentoCxDiaA4.rpt");
+                    prtVnd.Show();
+                }
+                else
+                {
+                    clsUtil.MsgBox("Sem informações para o filtro selecionado!", MessageBoxIcon.Information);
+                }
+
+            }
+            else 
+            {
+                clsUtil.MsgBox("Sem meios de pagamento selecionados!", MessageBoxIcon.Information);
+            }
+
         }
 
         private void btnSair_Click(object sender, EventArgs e)

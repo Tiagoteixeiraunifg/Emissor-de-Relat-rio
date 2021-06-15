@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using EmissorRelatorios.Controles;
+using EmissorRelatorios.Modelos;
 
 namespace EmissorRelatorios.Views
 {
@@ -14,6 +15,7 @@ namespace EmissorRelatorios.Views
         private static int tipo; //tipo 1 DAV, 2 NFCE, 3 NFE
         private static int funcaoDAO;
         private static int idGrupo;
+        private static ClsUtil clsUtil;
         public frmSaida()
         {
         
@@ -24,6 +26,7 @@ namespace EmissorRelatorios.Views
             tipo = 0;
             daVendas = new DataSetVendas();
             clsSaidaDAO = new ClsSaidaDAO();
+            clsUtil = new ClsUtil();
             loadCombobox();
         }
 
@@ -129,7 +132,7 @@ namespace EmissorRelatorios.Views
         private void imprimirSaida(string nomeRelatorio, int funcao, int tipo) {
             try
             {
-                if (int.Parse(daVendas.VENDAS.Rows.Count.ToString()) >= 0) { daVendas.VENDAS.Clear(); }
+                if (daVendas.VENDAS.Rows.Count >= 0) { daVendas.VENDAS.Clear(); }
             }
             catch (Exception)
             {
@@ -141,14 +144,31 @@ namespace EmissorRelatorios.Views
             if(funcaoDAO == 7)
             {
                 daVendas = clsSaidaDAO.selectMovimento(dataInicial.Value.ToString("yyyy/MM/dd"), dataFinal.Value.ToString("yyyy/MM/dd"));
-                frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
-                print.Show();
+                if (daVendas.VENDAS_CAIXA.Count > 0) 
+                {
+                    frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
+                    print.Show();
+                }
+                else 
+                {
+                    clsUtil.MsgBox("Sem dados para o fitro informado",MessageBoxIcon.Information);
+                               
+                }
+                
 
             }else  if (funcaoDAO == 8)
             {
                 daVendas = clsSaidaDAO.selectMovimento(dataInicial.Value.ToString("yyyy/MM/dd"), dataFinal.Value.ToString("yyyy/MM/dd"), tipo);
-                frmSelecaoTipoMov print = new frmSelecaoTipoMov(daVendas);
-                print.Show();
+                if (daVendas.VENDAS_CAIXA.Count > 0)
+                {
+                    frmSelecaoTipoMov print = new frmSelecaoTipoMov(daVendas);
+                    print.Show();
+                }
+                else 
+                {
+                    clsUtil.MsgBox("Sem dados para o fitro informado", MessageBoxIcon.Information);
+                }
+                
             }
             else if (funcaoDAO == 9)
             {
@@ -158,8 +178,16 @@ namespace EmissorRelatorios.Views
             else if (funcaoDAO != 8 && funcaoDAO != 7)
             {
                 daVendas = clsSaidaDAO.selectVendas(funcao, tipo, dataInicial.Value.ToString("yyyy/MM/dd"), dataFinal.Value.ToString("yyyy/MM/dd"),txtProduto.Text.ToString(), cboVendedor.SelectedValue.ToString(), cboCliente.SelectedValue.ToString(), idGrupo.ToString());
-                frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
-                print.Show();
+                if (daVendas.VENDAS.Count > 0)
+                {
+                    frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
+                    print.Show();
+                }
+                else 
+                {
+                    clsUtil.MsgBox("Sem dados para o fitro informado", MessageBoxIcon.Information);
+                }
+           
             }
 
         }

@@ -99,6 +99,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_551CA12536F641E3B08E3989D3CA4C85"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_572C11FFBE814078A55CACF5324E05B3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -117,6 +123,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6004472AEB4240FBB67EE13A0DFC97AB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6319A87B33B34448ADDAE1133C94D995"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,7 +141,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8A1056E457E74EB5BAE04806B59134C6"
+        "MsmKey" = "8:_7E4F6AE8E7844527A8A8937731616C83"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -173,6 +185,18 @@
         {
         "MsmKey" = "8:_950E40017C3E946EB364F46D4736210D"
         "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_950E40017C3E946EB364F46D4736210D"
+        "OwnerKey" = "8:_6004472AEB4240FBB67EE13A0DFC97AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F68EE2CC62E4C398E78ECC27CC47F19"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -257,6 +281,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C5548B04E6738F08CF563FAC554F6148"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6004472AEB4240FBB67EE13A0DFC97AB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -730,6 +760,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_551CA12536F641E3B08E3989D3CA4C85"
+            {
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\FechamentoCxDiaA4.rpt"
+            "TargetName" = "8:FechamentoCxDiaA4.rpt"
+            "Tag" = "8:"
+            "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_572C11FFBE814078A55CACF5324E05B3"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\Personalizada.rpt"
@@ -812,6 +862,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6004472AEB4240FBB67EE13A0DFC97AB"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_6004472AEB4240FBB67EE13A0DFC97AB"
+                    {
+                    "Name" = "8:CrystalDecisions.Windows.Forms.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Dependencias\\CrystalDecisions.Windows.Forms.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6319A87B33B34448ADDAE1133C94D995"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\Compras1.rpt"
@@ -852,10 +933,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8A1056E457E74EB5BAE04806B59134C6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7E4F6AE8E7844527A8A8937731616C83"
             {
-            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\FechamentoCxDia.rpt"
-            "TargetName" = "8:FechamentoCxDia.rpt"
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\FechamentoCxDiaCupom.rpt"
+            "TargetName" = "8:FechamentoCxDiaCupom.rpt"
             "Tag" = "8:"
             "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
             "Condition" = "8:"
@@ -992,6 +1073,26 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9F68EE2CC62E4C398E78ECC27CC47F19"
+            {
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\FechamentoCxDia.rpt"
+            "TargetName" = "8:FechamentoCxDia.rpt"
+            "Tag" = "8:"
+            "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A65011E71872438F8887E5ED8C7FB764"

@@ -22,6 +22,7 @@ namespace EmissorRelatorios.Views
         public frmPrintVendas(DataSetVendas ds, string relatorio)
         {
             InitializeComponent();
+            clsUtil = new ClsUtil();
             dsVendas = new DataSetVendas();
             rp = new ReportDocument();
             dsVendas = ds;
