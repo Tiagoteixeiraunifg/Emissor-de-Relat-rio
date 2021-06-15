@@ -47,12 +47,12 @@ namespace EmissorRelatorios.Modelos
             return 3;
         }
 
-        public static void LimpaFormulario(Control.ControlCollection controles)
+        public  void LimpaFormulario(Control.ControlCollection controles)
         {
             foreach (Control ctrl in controles)
             {
                 if (ctrl is NumericUpDown) { ((NumericUpDown)(ctrl)).Value = ((NumericUpDown)(ctrl)).Minimum; }
-                if (ctrl is TextBox) { ((TextBox)(ctrl)).Clear(); }
+                //if (ctrl is TextBox) { ((TextBox)(ctrl)).Clear(); }
                 if (ctrl is TextBox) { ((TextBox)(ctrl)).Enabled = false; }
                 if (ctrl is ComboBox) { ((ComboBox)(ctrl)).SelectedIndex = -1; }
                 if (ctrl is RichTextBox) { ((RichTextBox)(ctrl)).Enabled = false; }
@@ -62,10 +62,11 @@ namespace EmissorRelatorios.Modelos
                 if (ctrl is MaskedTextBox) { ((MaskedTextBox)(ctrl)).Clear(); }
                 if (ctrl is MaskedTextBox) { ((MaskedTextBox)(ctrl)).Mask = ""; }
                 if (ctrl is Button) { ((Button)(ctrl)).Enabled = false; }
+                if (ctrl is RadioButton) { ((RadioButton)(ctrl)).Enabled = false; }
                 LimpaFormulario(ctrl.Controls);
             }
         }
-        public static void HabilitaFormulario(Control.ControlCollection controles)
+        public  void HabilitaFormulario(Control.ControlCollection controles)
         {
             foreach (Control ctrl in controles)
             {
@@ -76,7 +77,8 @@ namespace EmissorRelatorios.Modelos
                 if (ctrl is ComboBox) { ((ComboBox)(ctrl)).Enabled = true; }
                 if (ctrl is DateTimePicker) { ((DateTimePicker)(ctrl)).Enabled = true; }
                 if (ctrl is RichTextBox) { ((RichTextBox)(ctrl)).Enabled = true; }
-
+                if (ctrl is Button) { ((Button)(ctrl)).Enabled = true; }
+                if (ctrl is RadioButton) { ((RadioButton)(ctrl)).Enabled = true; }
                 HabilitaFormulario(ctrl.Controls);
             }
         }

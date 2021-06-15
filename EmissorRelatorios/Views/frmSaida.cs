@@ -147,7 +147,10 @@ namespace EmissorRelatorios.Views
                 if (daVendas.VENDAS_CAIXA.Count > 0) 
                 {
                     frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
-                    print.Show();
+                    clsUtil.LimpaFormulario(this.Controls);
+                    print.ShowDialog();
+                    clsUtil.HabilitaFormulario(this.Controls);
+                    
                 }
                 else 
                 {
@@ -162,7 +165,9 @@ namespace EmissorRelatorios.Views
                 if (daVendas.VENDAS_CAIXA.Count > 0)
                 {
                     frmSelecaoTipoMov print = new frmSelecaoTipoMov(daVendas);
-                    print.Show();
+                    clsUtil.LimpaFormulario(this.Controls);
+                    print.ShowDialog();
+                    clsUtil.HabilitaFormulario(this.Controls);
                 }
                 else 
                 {
@@ -173,7 +178,9 @@ namespace EmissorRelatorios.Views
             else if (funcaoDAO == 9)
             {
                 frmSelecaoTipoMovMeioPg print = new frmSelecaoTipoMovMeioPg(dataInicial.Value, dataFinal.Value, tipo);
-                print.Show();
+                clsUtil.LimpaFormulario(this.Controls);
+                print.ShowDialog();
+                clsUtil.HabilitaFormulario(this.Controls);
             }
             else if (funcaoDAO != 8 && funcaoDAO != 7)
             {
@@ -181,7 +188,9 @@ namespace EmissorRelatorios.Views
                 if (daVendas.VENDAS.Count > 0)
                 {
                     frmPrintVendas print = new frmPrintVendas(daVendas, nomeRelatorio);
-                    print.Show();
+                    clsUtil.LimpaFormulario(this.Controls);
+                    print.ShowDialog();
+                    clsUtil.HabilitaFormulario(this.Controls);
                 }
                 else 
                 {

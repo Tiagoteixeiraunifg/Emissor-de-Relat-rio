@@ -161,7 +161,7 @@ namespace EmissorRelatorios.Views
         private void rdbSaidaVenda_MouseClick(object sender, MouseEventArgs e)
         {
             frmSaida frmS = new frmSaida();
-            frmS.Show();
+            frmS.ShowDialog();
 
         }
 
@@ -193,19 +193,19 @@ namespace EmissorRelatorios.Views
         private void btnSaidaVenda_MouseClick(object sender, MouseEventArgs e)
         {
             frmSaida frmS = new frmSaida();
-            frmS.Show();
+            frmS.ShowDialog();
         }
 
         private void btnEntradaCompra_Click(object sender, EventArgs e)
         {
             frmEntrada frmE = new frmEntrada();
-            frmE.Show();
+            frmE.ShowDialog();
         }
 
         private void btnEtiquetas_MouseClick(object sender, MouseEventArgs e)
         {
             frmEtiquetas frmEtq = new frmEtiquetas();
-            frmEtq.Show();
+            frmEtq.ShowDialog();
         }
     }
 }
