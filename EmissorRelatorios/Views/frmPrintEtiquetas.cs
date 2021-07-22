@@ -23,10 +23,10 @@ namespace EmissorRelatorios.Views
 
         public void imprimir(string relatorio)
         {
-            if (File.Exists(frmPrincipal.path + "relatorios\\etiquetas\\"+relatorio +""))
+            if (File.Exists(frmPrincipal.path + "relatorios\\etiquetas\\"+relatorio +".rpt"))
             {
             
-                rp.Load(frmPrincipal.path + "relatorios\\etiquetas\\"+relatorio+"");
+                rp.Load(frmPrincipal.path + "relatorios\\etiquetas\\"+relatorio+".rpt");
                 rp.SetDataSource(dsEtiquetas);
                 crvPrint.ReportSource = rp;
                 rp.Refresh();

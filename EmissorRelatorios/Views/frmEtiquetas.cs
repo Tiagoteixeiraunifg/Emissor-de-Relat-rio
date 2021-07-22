@@ -22,22 +22,19 @@ namespace EmissorRelatorios.Views
         private ClsEtiquetasDAO clsEtiquetasDAO;
         private BindingSource bs;
         private ClsProduto clsProduto;
-        private DataTable dtPrint;
         private DataTable dtPrintView;
         private static Boolean click;
         private static ClsUtil clsUtil;
         private static string codBarra;
-
+        private static bool importando;
         public frmEtiquetas()
         {
             InitializeComponent();
             clsProduto = new ClsProduto();
             bs = new BindingSource();
             dtProdutos = null;
-            dtPrint = new DataTable();
             dtPrintView = new DataTable();
             dtsEtiquetas = new DataSetEtiquetas();
-            ajusteDataTable();
             ajusteDataTableView();
             clsEtiquetasDAO = new ClsEtiquetasDAO();
             clsUtil = new ClsUtil();
@@ -45,17 +42,20 @@ namespace EmissorRelatorios.Views
             LoaddgvProdutos();
             loadCboRelatorio();
             click = false;
+            importando = false;
         }
 
-        private void ajusteDataTable() {
-            dtPrint.Columns.Add("ID_PRODUTO", typeof(int));
-            dtPrint.Columns.Add("GTIN", typeof(string));
-            dtPrint.Columns.Add("PRODUTO", typeof(string));
-            dtPrint.Columns.Add("VALOR_VENDA", typeof(decimal));
-            dtPrint.Columns.Add("VALOR_ATACADO", typeof(decimal));
-        }
         private void ajusteDataTableView()
         {
+            DataColumn id = new DataColumn();
+            id.ColumnName = "_id";
+            id.DataType = System.Type.GetType("System.Int32");
+            id.AutoIncrement = true;
+            id.AutoIncrementSeed = 1;
+            id.AutoIncrementStep = 1;
+            id.Unique = true;
+
+            dtPrintView.Columns.Add(id);
             dtPrintView.Columns.Add("ID_PRODUTO", typeof(int));
             dtPrintView.Columns.Add("GTIN", typeof(string));
             dtPrintView.Columns.Add("PRODUTO", typeof(string));
@@ -78,20 +78,33 @@ namespace EmissorRelatorios.Views
             dgvProdutos.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
             dgvProdutos.Columns["VALOR_VENDA"].Width = 70;
             dgvProdutos.Columns["VALOR_VENDA"].ValueType = typeof(string);
-            dgvProdutos.Columns["VALOR_VENDA"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            dgvProdutos.Columns["VALOR_VENDA"].DefaultCellStyle.Format = "C2";
             dgvProdutos.Columns["VALOR_VENDA"].DefaultCellStyle.BackColor = Color.FromArgb(200,240,240); 
             dgvProdutos.Columns["VALOR_ATACADO"].HeaderText = "PREÇO ATACADO";
             dgvProdutos.Columns["VALOR_ATACADO"].Width = 70;
-            dgvProdutos.Columns["VALOR_ATACADO"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            dgvProdutos.Columns["VALOR_ATACADO"].DefaultCellStyle.Format = "C2";
             dgvProdutos.Columns["VALOR_ATACADO"].DefaultCellStyle.BackColor = Color.FromArgb(100, 255, 255);
 
         }
         private void LoaddgvProdutosPrint()
         {
+            //DataTable dt = new DataTable();
+            //DataRow[] oDataRow = dtPrintView.Select("_id > 0", "_id ASC");
+            //foreach (DataRow dr in oDataRow)
+            //{
+            //    dt.Rows.Add(dr);
+            //}
 
-            dgvProdutosPrint.DataSource = dtPrintView;
+            BindingSource bnds = new BindingSource();
+            bnds.DataSource = dtPrintView;
+            bnds.Sort = "_id DESC";
+            dgvProdutosPrint.DataSource = bnds;
+            
             dgvProdutosPrint.AutoResizeColumns();
+
             //dgvProdutos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProdutosPrint.Columns["_ID"].HeaderText = "Item";
+            dgvProdutosPrint.Columns["_ID"].Width = 25;
             dgvProdutosPrint.Columns["ID_PRODUTO"].HeaderText = "CODIGO";
             dgvProdutosPrint.Columns["ID_PRODUTO"].Width = 45;
             dgvProdutosPrint.Columns["GTIN"].HeaderText = "CODIGO BARRAS";
@@ -100,11 +113,10 @@ namespace EmissorRelatorios.Views
             dgvProdutosPrint.Columns["PRODUTO"].Width = 260;
             dgvProdutosPrint.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
             dgvProdutosPrint.Columns["VALOR_VENDA"].Width = 70;
-            dgvProdutosPrint.Columns["VALOR_VENDA"].ValueType = typeof(string);
-            dgvProdutosPrint.Columns["VALOR_VENDA"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            dgvProdutosPrint.Columns["VALOR_VENDA"].DefaultCellStyle.Format = "C2";
             dgvProdutosPrint.Columns["VALOR_ATACADO"].HeaderText = "PREÇO ATACADO";
             dgvProdutosPrint.Columns["VALOR_ATACADO"].Width = 70;
-            dgvProdutosPrint.Columns["VALOR_ATACADO"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            dgvProdutosPrint.Columns["VALOR_ATACADO"].DefaultCellStyle.Format = "C2";
             dgvProdutosPrint.Columns["QTD"].HeaderText = "QUANTIDADE";
             dgvProdutosPrint.Columns["QTD"].Width = 100;
 
@@ -112,12 +124,15 @@ namespace EmissorRelatorios.Views
 
         private void loadCboRelatorio() 
         {
-
+            cbSelectEtq.AutoCompleteMode = AutoCompleteMode.None;
             DirectoryInfo di = new DirectoryInfo(frmPrincipal.path + "relatorios\\etiquetas\\");
             Console.WriteLine("No search pattern returns:");
             foreach (var fi in di.GetFiles())
             {
-                cbSelectEtq.Items.Add(fi.Name);
+                if (fi.Extension == ".rpt") {
+                    cbSelectEtq.Items.Add(fi.Name.Replace(".rpt",""));
+                }
+                
                 //Console.WriteLine(fi.Name);
             }
             if (cbSelectEtq.Items.Count >= 1)
@@ -146,7 +161,9 @@ namespace EmissorRelatorios.Views
             }
             else if (e.KeyChar.ToString() == Convert.ToString((Char)Keys.Enter) && txtFiltro.Text.Equals(""))
             {
+                
                 bs.RemoveFilter();
+
             }
             else if (e.KeyChar.ToString() == Convert.ToString((Char)Keys.Down) && txtFiltro.Text.ToString().Length > 0) 
             {
@@ -172,19 +189,16 @@ namespace EmissorRelatorios.Views
                 clsProduto.setQuantidade(int.Parse(nUpQtd.Value.ToString()));
                 if (int.Parse(nUpQtd.Value.ToString()) > 1)
                 {
-
                     for (int i = 0; i < int.Parse(nUpQtd.Value.ToString()); i++)
                     {
-                        dtPrint.Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
                         dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
                     }
-                    dtPrintView.Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
+                    dtPrintView.Rows.Add(null,clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(),  clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
                 }
                 else
                 {
-                    dtPrint.Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
                     dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
-                    dtPrintView.Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
+                    dtPrintView.Rows.Add(null, clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());                  
                 }
                 LoaddgvProdutosPrint();
             }
@@ -224,12 +238,16 @@ namespace EmissorRelatorios.Views
             {
                 clsUtil.MsgBox("Selecione a Etiqueta a ser Impressa!", MessageBoxIcon.Information);
             }
+            else if (dtsEtiquetas.Tables[0].Rows.Count > 0)
+            {
+
+                frmPrintEtiquetas frmPrint = new frmPrintEtiquetas(dtsEtiquetas, cbSelectEtq.SelectedItem.ToString());
+                frmPrint.ShowDialog();
+
+            }
             else 
             {
-                
-                frmPrintEtiquetas frmPrint = new frmPrintEtiquetas(dtsEtiquetas, cbSelectEtq.SelectedItem.ToString());
-                frmPrint.Show();
-
+                clsUtil.MsgBox("Nenhuma etiqueta adicionada na lista!", MessageBoxIcon.Information);
             }
            
         }
@@ -241,6 +259,12 @@ namespace EmissorRelatorios.Views
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (importando) {
+                dtsEtiquetas.Clear();
+                dtPrintView.Clear();
+                importando = false;
+                LoaddgvProdutosPrint();
+            }
             DataRow[] oDataRow = dtPrintView.Select();
             foreach (DataRow dr in oDataRow)
             {
@@ -264,8 +288,7 @@ namespace EmissorRelatorios.Views
         {
             if (e.KeyChar.ToString() == Convert.ToString((Char)Keys.Enter))
             {
-              
-
+                  
             }
         }
 
@@ -295,6 +318,13 @@ namespace EmissorRelatorios.Views
             {
                 dgvProdutos.Focus();                    
             }
+            if (e.KeyCode == Keys.Back && txtFiltro.Text.Equals("")) 
+            {
+                bs.RemoveFilter();
+                dtProdutos.Clear();
+                dtProdutos = clsEtiquetasDAO.GetProdutos();
+                LoaddgvProdutos();
+            }
         }
 
         private void frmEtiquetas_Load(object sender, EventArgs e)
@@ -307,5 +337,31 @@ namespace EmissorRelatorios.Views
             this.Close();
         }
 
+        private void btnImportNota_Click(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text.Length > 1)
+            {
+                importando = true;
+                dtsEtiquetas.Clear();
+                dtPrintView.Clear();
+                dtsEtiquetas = clsEtiquetasDAO.getProdutosNotaCompra(txtFiltro.Text);
+                if (!clsEtiquetasDAO.sucesso)
+                {
+                    clsUtil.MsgBox("Não foi possível encontar a  " + clsEtiquetasDAO.retorno, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    dtPrintView = clsEtiquetasDAO.dsViewFull();
+                    LoaddgvProdutosPrint();
+                    clsUtil.MsgBox("Nota encontrada!", MessageBoxIcon.Information);
+                    cbSelectEtq.Focus();
+                }
+
+            }
+            else 
+            {
+                clsUtil.MsgBox("Digite o número da nota no campo de Busca Produto para pesquisar", MessageBoxIcon.Information);
+            }
+        }
     }
 }

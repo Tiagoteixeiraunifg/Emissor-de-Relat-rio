@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0A43008E5E0475682EE885E67180345F"
-        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0D6FEDE235F041BCB7A74C547A0EB4C5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,25 +39,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1DC551FB9BD64F56A63609C2B1104579"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_204B995BBB704C62A80EF5C594255412"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_23B6BB4DE1734939B085F67F52449F1A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2F5DD685703248BCA845D7B187766DE4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3213DC68AD6E4118867AB979E48FB6EC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,6 +70,12 @@
         "Entry"
         {
         "MsmKey" = "8:_43AF31EE7B2C4011988CD965E65D0ECA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_47D53AB66B4F442086F6E11978F63E3F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -249,6 +243,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E033301A3E3116480985CB5AE5F0CC6A"
+        "OwnerKey" = "8:_40C376104FA34B1095BB90F5B4F894FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E656838318574EC78EF1E920392FBF86"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -340,6 +340,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E033301A3E3116480985CB5AE5F0CC6A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_AE33A4FF01F81FA8D010626AD1458EC0"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -353,12 +359,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E69D6DA57F04A6FAEE038225584153A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0A43008E5E0475682EE885E67180345F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -456,37 +456,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0A43008E5E0475682EE885E67180345F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_0A43008E5E0475682EE885E67180345F"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D6FEDE235F041BCB7A74C547A0EB4C5"
             {
             "AssemblyRegister" = "3:1"
@@ -600,6 +569,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1DC551FB9BD64F56A63609C2B1104579"
+            {
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\etiquetas\\Pimaco 65 A4.rpt"
+            "TargetName" = "8:Pimaco 65 A4.rpt"
+            "Tag" = "8:"
+            "Folder" = "8:_6B9128471B404079A640CFD254A85C28"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_204B995BBB704C62A80EF5C594255412"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\VendasVendedorItemDetTodosItemClientesFull.rpt"
@@ -620,50 +609,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_23B6BB4DE1734939B085F67F52449F1A"
-            {
-            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\Etiqueta2 - Cópia .rpt"
-            "TargetName" = "8:Etiqueta2 - Cópia .rpt"
-            "Tag" = "8:"
-            "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2F5DD685703248BCA845D7B187766DE4"
             {
             "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\VendasVendedorItemDetTodosItem.rpt"
             "TargetName" = "8:VendasVendedorItemDetTodosItem.rpt"
-            "Tag" = "8:"
-            "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3213DC68AD6E4118867AB979E48FB6EC"
-            {
-            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\Etiqueta1 - Cópia .rpt"
-            "TargetName" = "8:Etiqueta1 - Cópia .rpt"
             "Tag" = "8:"
             "Folder" = "8:_C48EBAEDC0EE4D3582A36FF952E6C253"
             "Condition" = "8:"
@@ -706,6 +655,26 @@
             "TargetName" = "8:iconePrincipal.ico"
             "Tag" = "8:"
             "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47D53AB66B4F442086F6E11978F63E3F"
+            {
+            "SourcePath" = "8:..\\..\\EmissorRelatorios\\Relatorios\\etiquetas\\Link 85 A4.rpt"
+            "TargetName" = "8:Link 85 A4.rpt"
+            "Tag" = "8:"
+            "Folder" = "8:_6B9128471B404079A640CFD254A85C28"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1248,6 +1217,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E033301A3E3116480985CB5AE5F0CC6A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_E033301A3E3116480985CB5AE5F0CC6A"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_F6DCAA90BE7E48A89E2C74062A30DAA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E656838318574EC78EF1E920392FBF86"
             {
             "SourcePath" = "8:..\\..\\..\\..\\..\\..\\..\\source\\repos\\CRRuntime_32bit_13_0_27.MSI"
@@ -1440,7 +1440,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Emissor Relatorios Setup"
         "ProductCode" = "8:{6BB60F58-7734-4862-9E3C-84BC215DAB02}"
-        "PackageCode" = "8:{A7EA7EEF-97C8-4D4D-AB5E-D31BE39878F9}"
+        "PackageCode" = "8:{F1033D04-6DC3-41D2-8B84-70253C77D578}"
         "UpgradeCode" = "8:{E7C3B55E-DA28-4E73-A12E-871622C4C3C1}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
