@@ -10,6 +10,7 @@ namespace EmissorRelatorios.Modelos
     {
         private int idProduto;
         private string gtin;
+        public string referencia { get; set; }
         private string produto;
         private decimal valor_venda;
         private decimal valor_atacado;

@@ -283,6 +283,8 @@ namespace EmissorRelatorios.DadosTemp {
             
             private global::System.Data.DataColumn columnGTIN;
             
+            private global::System.Data.DataColumn columnREFERENCIA;
+            
             private global::System.Data.DataColumn columnPRODUTO;
             
             private global::System.Data.DataColumn columnVALOR_VENDA;
@@ -335,6 +337,14 @@ namespace EmissorRelatorios.DadosTemp {
             public global::System.Data.DataColumn GTINColumn {
                 get {
                     return this.columnGTIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn REFERENCIAColumn {
+                get {
+                    return this.columnREFERENCIA;
                 }
             }
             
@@ -399,11 +409,12 @@ namespace EmissorRelatorios.DadosTemp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public _0Row Add_0Row(int ID_PRODUTO, string GTIN, string PRODUTO, decimal VALOR_VENDA, decimal VALOR_ATACADO) {
+            public _0Row Add_0Row(int ID_PRODUTO, string GTIN, string REFERENCIA, string PRODUTO, decimal VALOR_VENDA, decimal VALOR_ATACADO) {
                 _0Row row_0Row = ((_0Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_PRODUTO,
                         GTIN,
+                        REFERENCIA,
                         PRODUTO,
                         VALOR_VENDA,
                         VALOR_ATACADO};
@@ -431,6 +442,7 @@ namespace EmissorRelatorios.DadosTemp {
             internal void InitVars() {
                 this.columnID_PRODUTO = base.Columns["ID_PRODUTO"];
                 this.columnGTIN = base.Columns["GTIN"];
+                this.columnREFERENCIA = base.Columns["REFERENCIA"];
                 this.columnPRODUTO = base.Columns["PRODUTO"];
                 this.columnVALOR_VENDA = base.Columns["VALOR_VENDA"];
                 this.columnVALOR_ATACADO = base.Columns["VALOR_ATACADO"];
@@ -443,6 +455,8 @@ namespace EmissorRelatorios.DadosTemp {
                 base.Columns.Add(this.columnID_PRODUTO);
                 this.columnGTIN = new global::System.Data.DataColumn("GTIN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGTIN);
+                this.columnREFERENCIA = new global::System.Data.DataColumn("REFERENCIA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnREFERENCIA);
                 this.columnPRODUTO = new global::System.Data.DataColumn("PRODUTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPRODUTO);
                 this.columnVALOR_VENDA = new global::System.Data.DataColumn("VALOR_VENDA", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -625,6 +639,22 @@ namespace EmissorRelatorios.DadosTemp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string REFERENCIA {
+                get {
+                    try {
+                        return ((string)(this[this.table0.REFERENCIAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'REFERENCIA\' na tabela \'0\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.table0.REFERENCIAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string PRODUTO {
                 get {
                     try {
@@ -693,6 +723,18 @@ namespace EmissorRelatorios.DadosTemp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetGTINNull() {
                 this[this.table0.GTINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsREFERENCIANull() {
+                return this.IsNull(this.table0.REFERENCIAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetREFERENCIANull() {
+                this[this.table0.REFERENCIAColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

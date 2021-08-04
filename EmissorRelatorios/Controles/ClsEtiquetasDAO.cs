@@ -41,11 +41,13 @@ namespace EmissorRelatorios.Controles
             dsV.Columns.Add(id);
             dsV.Columns.Add("ID_PRODUTO", typeof(int));
             dsV.Columns.Add("GTIN", typeof(string));
+            dsV.Columns.Add("REFERENCIA", typeof(string));
             dsV.Columns.Add("PRODUTO", typeof(string));
             dsV.Columns.Add("VALOR_VENDA", typeof(decimal));
             dsV.Columns.Add("VALOR_ATACADO", typeof(decimal));
             dsV.Columns.Add("QTD", typeof(int));
             
+
             //aqui inicio a conexão
             ConexaoDAO cnn = new ConexaoDAO();
             FbDataAdapter da = null;
@@ -57,7 +59,7 @@ namespace EmissorRelatorios.Controles
             {
                 using (var con = cnn.conectar().CreateCommand())
                 {
-                    con.CommandText = "select P.ID_PRODUTO, P.GTIN, P.PRODUTO, P.VALOR_VENDA, P.VALOR_ATACADO, cast(NTCD.QUANTIDADE as Integer) AS QTD from PRODUTOS P " +
+                    con.CommandText = "select P.ID_PRODUTO, P.GTIN, P.REFERENCIA , P.PRODUTO, P.VALOR_VENDA, P.VALOR_ATACADO, cast(NTCD.QUANTIDADE as Integer) AS QTD from PRODUTOS P " +
                 " INNER JOIN NOTA_COMPRA_DETALHE NTCD ON NTCD.ID_PRODUTO = P.ID_PRODUTO " +
                 " INNER JOIN NOTA_COMPRA NTC ON NTC.ID = NTCD.ID_NFE " +
                 " WHERE NTC.NOTA = "+notaDigitada+ " and NTC.NFE_STATUS = 'Concluido'" +
@@ -73,6 +75,7 @@ namespace EmissorRelatorios.Controles
                         //rw["_id"] = i +1;
                         rw["ID_PRODUTO"] = int.Parse(dsView.Tables[0].Rows[i]["ID_PRODUTO"].ToString());
                         rw["GTIN"] = dsView.Tables[0].Rows[i]["GTIN"].ToString();
+                        rw["REFERENCIA"] = dsView.Tables[0].Rows[i]["REFERENCIA"].ToString();
                         rw["PRODUTO"] = dsView.Tables[0].Rows[i]["PRODUTO"].ToString();
                         rw["VALOR_VENDA"] = decimal.Parse(dsView.Tables[0].Rows[i]["VALOR_VENDA"].ToString());
                         rw["VALOR_ATACADO"] = decimal.Parse(dsView.Tables[0].Rows[i]["VALOR_ATACADO"].ToString());
@@ -108,7 +111,7 @@ namespace EmissorRelatorios.Controles
             {
                 using (var con = cnn.conectar().CreateCommand())
                 {
-                    con.CommandText = "select ID_PRODUTO, GTIN, PRODUTO, VALOR_VENDA, VALOR_ATACADO from PRODUTOS order by PRODUTO";
+                    con.CommandText = "select ID_PRODUTO, GTIN, REFERENCIA, PRODUTO, VALOR_VENDA, VALOR_ATACADO from PRODUTOS order by PRODUTO";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
                     da.Fill(ds);
                     return ds;
@@ -140,7 +143,7 @@ namespace EmissorRelatorios.Controles
             FbDataAdapter da;
             FbDataReader leitor;
             string sql = "select nota from nota_compra where nota = @nota and NFE_STATUS = 'Concluido'";
-            string sql2 = "select P.ID_PRODUTO, P.GTIN, P.PRODUTO, P.VALOR_VENDA, P.VALOR_ATACADO, cast(NTCD.QUANTIDADE as Integer) AS QTD  from PRODUTOS P " +
+            string sql2 = "select P.ID_PRODUTO, P.GTIN, P.REFERENCIA, P.PRODUTO, P.VALOR_VENDA, P.VALOR_ATACADO, cast(NTCD.QUANTIDADE as Integer) AS QTD  from PRODUTOS P " +
                 " INNER JOIN NOTA_COMPRA_DETALHE NTCD ON NTCD.ID_PRODUTO = P.ID_PRODUTO " +
                 " INNER JOIN NOTA_COMPRA NTC ON NTC.ID = NTCD.ID_NFE " +
                 " WHERE NTC.NOTA = @nota and NTC.NFE_STATUS = 'Concluido'" +
@@ -213,7 +216,7 @@ namespace EmissorRelatorios.Controles
                         //limpa os parametros existentes na instancia
                         cmd2.Parameters.Clear();
                         cmd2.CommandType = CommandType.Text;
-                        cmd2.Parameters.Add("@nota", notaDigitada);
+                        cmd2.Parameters.Add("@nota", FbDbType.Integer).Value = int.Parse(notaDigitada);
                         cmd2.Connection = con.conectar();
                         cmd2.ExecuteNonQuery();
                         //executa a leitura da script executado
@@ -231,7 +234,7 @@ namespace EmissorRelatorios.Controles
                             while (leitor2.Read())
                             {
                                 //pegando o valor que está guardado no banco com a quantidade do item
-                                int valor = leitor2.GetInt32(5);
+                                int valor = leitor2.GetInt32(6);
                                 if ( valor > 1)   // para valores maiores que 1 ele multiplica as linhas pela quantidade
                                 {
                                     for (int i = 0; i < valor; i++) 
@@ -239,9 +242,10 @@ namespace EmissorRelatorios.Controles
                                         DataRow row = ds.Tables["0"].NewRow();
                                         row["ID_PRODUTO"] = leitor2.GetInt32(0);
                                         row["GTIN"] = leitor2.GetString(1);
-                                        row["PRODUTO"] = leitor2.GetString(2);
-                                        row["VALOR_VENDA"] = leitor2.GetDecimal(3);
-                                        row["VALOR_ATACADO"] = leitor2.GetDecimal(4);
+                                        row["REFERENCIA"] = leitor2.GetString(2);
+                                        row["PRODUTO"] = leitor2.GetString(3);
+                                        row["VALOR_VENDA"] = leitor2.GetDecimal(4);
+                                        row["VALOR_ATACADO"] = leitor2.GetDecimal(5);
                                         ds.Tables[0].Rows.Add(row);
                                     }
                                 }
@@ -250,9 +254,10 @@ namespace EmissorRelatorios.Controles
                                     DataRow row2 = ds.Tables["0"].NewRow();
                                     row2["ID_PRODUTO"] = leitor2.GetInt32(0);
                                     row2["GTIN"] = leitor2.GetString(1);
-                                    row2["PRODUTO"] = leitor2.GetString(2);
-                                    row2["VALOR_VENDA"] = leitor2.GetDecimal(3);
-                                    row2["VALOR_ATACADO"] = leitor2.GetDecimal(4);
+                                    row2["REFERENCIA"] = leitor2.GetString(2);
+                                    row2["PRODUTO"] = leitor2.GetString(3);
+                                    row2["VALOR_VENDA"] = leitor2.GetDecimal(4);
+                                    row2["VALOR_ATACADO"] = leitor2.GetDecimal(5);
                                     ds.Tables[0].Rows.Add(row2);
                                 }
                                 

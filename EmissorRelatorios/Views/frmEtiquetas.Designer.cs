@@ -80,6 +80,11 @@
             // 
             this.nUpQtd.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nUpQtd.Location = new System.Drawing.Point(20, 24);
+            this.nUpQtd.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.nUpQtd.Name = "nUpQtd";
             this.nUpQtd.Size = new System.Drawing.Size(112, 34);
             this.nUpQtd.TabIndex = 4;

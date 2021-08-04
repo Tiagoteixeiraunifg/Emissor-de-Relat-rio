@@ -16,14 +16,14 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Etiqueta1 : ReportClass {
+    public class Etiqueta_2_Gondola : ReportClass {
         
-        public Etiqueta1() {
+        public Etiqueta_2_Gondola() {
         }
         
         public override string ResourceName {
             get {
-                return "Etiqueta1.rpt";
+                return "Etiqueta 2 Gondola.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         public override string FullResourceName {
             get {
-                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta1.rpt";
+                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta 2 Gondola.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEtiqueta1 : Component, ICachedReport {
+    public class CachedEtiqueta_2_Gondola : Component, ICachedReport {
         
-        public CachedEtiqueta1() {
+        public CachedEtiqueta_2_Gondola() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Etiqueta1 rpt = new Etiqueta1();
+            Etiqueta_2_Gondola rpt = new Etiqueta_2_Gondola();
             rpt.Site = this.Site;
             return rpt;
         }

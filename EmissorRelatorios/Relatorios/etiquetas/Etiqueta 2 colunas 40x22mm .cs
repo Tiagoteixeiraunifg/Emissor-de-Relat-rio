@@ -16,14 +16,14 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Etiqueta2 : ReportClass {
+    public class Etiqueta_2_colunas_40x22mm_ : ReportClass {
         
-        public Etiqueta2() {
+        public Etiqueta_2_colunas_40x22mm_() {
         }
         
         public override string ResourceName {
             get {
-                return "Etiqueta2.rpt";
+                return "Etiqueta 2 colunas 40x22mm .rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         public override string FullResourceName {
             get {
-                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta2.rpt";
+                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta 2 colunas 40x22mm .rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEtiqueta2 : Component, ICachedReport {
+    public class CachedEtiqueta_2_colunas_40x22mm_ : Component, ICachedReport {
         
-        public CachedEtiqueta2() {
+        public CachedEtiqueta_2_colunas_40x22mm_() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Etiqueta2 rpt = new Etiqueta2();
+            Etiqueta_2_colunas_40x22mm_ rpt = new Etiqueta_2_colunas_40x22mm_();
             rpt.Site = this.Site;
             return rpt;
         }

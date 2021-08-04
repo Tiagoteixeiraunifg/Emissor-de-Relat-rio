@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Win32Resource>
@@ -126,10 +128,15 @@
     <Compile Include="Controles\ClsEtiquetasDAO.cs" />
     <Compile Include="Controles\ClsSaidaDAO.cs" />
     <Compile Include="Controles\ConexaoDAO.cs" />
+    <Compile Include="Controles\EtiquetaController.cs" />
+    <Compile Include="Controles\IController.cs" />
     <Compile Include="DadosTemp\DataSetCompras.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetCompras.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DadosTemp\DataSetEtiquetas.cs">
+      <DependentUpon>DataSetEtiquetas.xsd</DependentUpon>
     </Compile>
     <Compile Include="DadosTemp\DataSetEtiquetas.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -163,10 +170,11 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\etiquetas\CrystalReport1.cs">
+    <Compile Include="Relatorios\etiquetas\Etiqueta 2 colunas 40x22mm .cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>Etiqueta 2 colunas 40x22mm .rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Relatorios\etiquetas\Link 85 A4.cs">
       <AutoGen>True</AutoGen>
@@ -180,10 +188,10 @@
       <DependentUpon>Pimaco 65 A4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\etiquetas\Etiqueta1.cs">
+    <Compile Include="Relatorios\etiquetas\Etiqueta1 Gondola.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Etiqueta1.rpt</DependentUpon>
+      <DependentUpon>Etiqueta1 Gondola.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
@@ -214,10 +222,10 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\etiquetas\Etiqueta2.cs">
+    <Compile Include="Relatorios\etiquetas\Etiqueta 2 Gondola.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Etiqueta2.rpt</DependentUpon>
+      <DependentUpon>Etiqueta 2 Gondola.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
@@ -366,9 +374,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta1 - Cópia .cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\etiquetas\CrystalReport1.rpt">
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta 2 colunas 40x22mm .rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>Etiqueta 2 colunas 40x22mm .cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\etiquetas\Link 85 A4.rpt">
@@ -381,9 +389,9 @@
       <LastGenOutput>Pimaco 65 A4.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta1.rpt">
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta1 Gondola.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Etiqueta1.cs</LastGenOutput>
+      <LastGenOutput>Etiqueta1 Gondola.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FechamentoCxDiaCupom.rpt">
@@ -405,9 +413,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta2 - Cópia .cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta2.rpt">
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta 2 Gondola.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Etiqueta2.cs</LastGenOutput>
+      <LastGenOutput>Etiqueta 2 Gondola.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FechamentoCxDia.rpt">

@@ -27,6 +27,8 @@ namespace EmissorRelatorios.Views
         private static ClsUtil clsUtil;
         private static string codBarra;
         private static bool importando;
+        private EtiquetaController controller = new EtiquetaController();
+
         public frmEtiquetas()
         {
             InitializeComponent();
@@ -43,7 +45,12 @@ namespace EmissorRelatorios.Views
             loadCboRelatorio();
             click = false;
             importando = false;
+            controller.executa(this);
         }
+
+        public TextBox getTextBox() { return txtFiltro; }
+        public void getTextBox(TextBox txt) { txtFiltro = txt; }
+
 
         private void ajusteDataTableView()
         {
@@ -58,6 +65,7 @@ namespace EmissorRelatorios.Views
             dtPrintView.Columns.Add(id);
             dtPrintView.Columns.Add("ID_PRODUTO", typeof(int));
             dtPrintView.Columns.Add("GTIN", typeof(string));
+            dtPrintView.Columns.Add("REFERENCIA", typeof(string));
             dtPrintView.Columns.Add("PRODUTO", typeof(string));
             dtPrintView.Columns.Add("VALOR_VENDA", typeof(decimal));
             dtPrintView.Columns.Add("VALOR_ATACADO", typeof(decimal));
@@ -73,6 +81,7 @@ namespace EmissorRelatorios.Views
             dgvProdutos.Columns["ID_PRODUTO"].HeaderText = "CODIGO";
             dgvProdutos.Columns["ID_PRODUTO"].Width = 45;
             dgvProdutos.Columns["GTIN"].HeaderText = "CODIGO BARRAS";
+            dgvProdutos.Columns["REFERENCIA"].HeaderText = "REFERÊNCIA";
             dgvProdutos.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
             dgvProdutos.Columns["PRODUTO"].Width = 350;
             dgvProdutos.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
@@ -109,6 +118,8 @@ namespace EmissorRelatorios.Views
             dgvProdutosPrint.Columns["ID_PRODUTO"].Width = 45;
             dgvProdutosPrint.Columns["GTIN"].HeaderText = "CODIGO BARRAS";
             dgvProdutosPrint.Columns["GTIN"].Width = 90;
+            dgvProdutosPrint.Columns["REFERENCIA"].HeaderText = "REFERÊNCIA";
+            dgvProdutosPrint.Columns["REFERENCIA"].Width = 90;
             dgvProdutosPrint.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
             dgvProdutosPrint.Columns["PRODUTO"].Width = 260;
             dgvProdutosPrint.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
@@ -175,6 +186,7 @@ namespace EmissorRelatorios.Views
         {
             clsProduto.setIdProduto(int.Parse(this.dgvProdutos["ID_PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setGtin(this.dgvProdutos["GTIN", this.dgvProdutos.CurrentRow.Index].Value.ToString());
+            clsProduto.referencia = this.dgvProdutos["REFERENCIA", this.dgvProdutos.CurrentRow.Index].Value.ToString();
             clsProduto.setProduto(this.dgvProdutos["PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString());
             clsProduto.setValorVenda(decimal.Parse(this.dgvProdutos["VALOR_VENDA", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setValorAtacado(decimal.Parse(this.dgvProdutos["VALOR_ATACADO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
@@ -191,14 +203,14 @@ namespace EmissorRelatorios.Views
                 {
                     for (int i = 0; i < int.Parse(nUpQtd.Value.ToString()); i++)
                     {
-                        dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
+                        dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
                     }
-                    dtPrintView.Rows.Add(null,clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(),  clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
+                    dtPrintView.Rows.Add(null,clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(),  clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
                 }
                 else
                 {
-                    dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
-                    dtPrintView.Rows.Add(null, clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());                  
+                    dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
+                    dtPrintView.Rows.Add(null, clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());                  
                 }
                 LoaddgvProdutosPrint();
             }
@@ -221,6 +233,7 @@ namespace EmissorRelatorios.Views
             click = true;
             clsProduto.setIdProduto(int.Parse(this.dgvProdutos["ID_PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setGtin(this.dgvProdutos["GTIN", this.dgvProdutos.CurrentRow.Index].Value.ToString());
+            clsProduto.referencia = this.dgvProdutos["REFERENCIA", this.dgvProdutos.CurrentRow.Index].Value.ToString();
             clsProduto.setProduto(this.dgvProdutos["PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString());
             clsProduto.setValorVenda(decimal.Parse(this.dgvProdutos["VALOR_VENDA", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setValorAtacado(decimal.Parse(this.dgvProdutos["VALOR_ATACADO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
@@ -316,6 +329,7 @@ namespace EmissorRelatorios.Views
         {
             if(e.KeyCode == Keys.Down)
             {
+                controller.teste();
                 dgvProdutos.Focus();                    
             }
             if (e.KeyCode == Keys.Back && txtFiltro.Text.Equals("")) 

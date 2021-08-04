@@ -16,14 +16,14 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class Etiqueta1_Gondola : ReportClass {
         
-        public CrystalReport1() {
+        public Etiqueta1_Gondola() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "Etiqueta1 Gondola.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         public override string FullResourceName {
             get {
-                return "EmissorRelatorios.Relatorios.etiquetas.CrystalReport1.rpt";
+                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta1 Gondola.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,49 +82,17 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection3 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection4 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[7];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[8];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedEtiqueta1_Gondola : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedEtiqueta1_Gondola() {
         }
         
         [Browsable(false)]
@@ -161,7 +129,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            Etiqueta1_Gondola rpt = new Etiqueta1_Gondola();
             rpt.Site = this.Site;
             return rpt;
         }
