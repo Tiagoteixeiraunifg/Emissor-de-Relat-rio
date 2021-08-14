@@ -61,7 +61,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 59);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(506, 71);
+            this.groupBox2.Size = new System.Drawing.Size(570, 71);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Busca Produto";
@@ -71,7 +71,7 @@
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.Location = new System.Drawing.Point(6, 23);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(485, 34);
+            this.txtFiltro.Size = new System.Drawing.Size(548, 34);
             this.txtFiltro.TabIndex = 0;
             this.txtFiltro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFiltro_KeyDown);
             this.txtFiltro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFiltro_KeyPress);
@@ -100,7 +100,7 @@
             this.groupBox3.Controls.Add(this.btnInsert);
             this.groupBox3.Controls.Add(this.nUpQtd);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(536, 59);
+            this.groupBox3.Location = new System.Drawing.Point(599, 59);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(236, 71);
             this.groupBox3.TabIndex = 5;
@@ -138,7 +138,7 @@
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProdutos.ShowEditingIcon = false;
-            this.dgvProdutos.Size = new System.Drawing.Size(748, 226);
+            this.dgvProdutos.Size = new System.Drawing.Size(811, 226);
             this.dgvProdutos.TabIndex = 6;
             this.dgvProdutos.TabStop = false;
             this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellClick);
@@ -151,7 +151,7 @@
             this.groupBox4.Controls.Add(this.dgvProdutos);
             this.groupBox4.Location = new System.Drawing.Point(12, 136);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(760, 251);
+            this.groupBox4.Size = new System.Drawing.Size(823, 251);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Resultado da Busca";
@@ -161,7 +161,7 @@
             this.groupBox5.Controls.Add(this.dgvProdutosPrint);
             this.groupBox5.Location = new System.Drawing.Point(12, 388);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(678, 210);
+            this.groupBox5.Size = new System.Drawing.Size(719, 210);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Lista de Produtos a Serem Impressos";
@@ -182,7 +182,7 @@
             this.dgvProdutosPrint.Name = "dgvProdutosPrint";
             this.dgvProdutosPrint.ReadOnly = true;
             this.dgvProdutosPrint.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutosPrint.Size = new System.Drawing.Size(656, 173);
+            this.dgvProdutosPrint.Size = new System.Drawing.Size(707, 173);
             this.dgvProdutosPrint.TabIndex = 6;
             this.dgvProdutosPrint.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvProdutosPrint_MouseClick);
             // 
@@ -194,7 +194,7 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(12, 604);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(760, 119);
+            this.groupBox6.Size = new System.Drawing.Size(823, 119);
             this.groupBox6.TabIndex = 9;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Seleção de Etiqueta / Impressão";
@@ -216,7 +216,7 @@
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(645, 18);
+            this.btnPrint.Location = new System.Drawing.Point(708, 19);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(99, 94);
             this.btnPrint.TabIndex = 1;
@@ -235,7 +235,7 @@
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::EmissorRelatorios.Properties.Resources.iconExcluir;
-            this.btnExcluir.Location = new System.Drawing.Point(696, 393);
+            this.btnExcluir.Location = new System.Drawing.Point(743, 393);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(76, 70);
             this.btnExcluir.TabIndex = 10;
@@ -249,7 +249,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Verdana", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechar.Location = new System.Drawing.Point(739, -4);
+            this.btnFechar.Location = new System.Drawing.Point(790, -1);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(58, 54);
             this.btnFechar.TabIndex = 11;
@@ -260,7 +260,7 @@
             // btnImportNota
             // 
             this.btnImportNota.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImportNota.Location = new System.Drawing.Point(536, 30);
+            this.btnImportNota.Location = new System.Drawing.Point(619, 12);
             this.btnImportNota.Name = "btnImportNota";
             this.btnImportNota.Size = new System.Drawing.Size(154, 23);
             this.btnImportNota.TabIndex = 50;
@@ -273,7 +273,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(789, 732);
+            this.ClientSize = new System.Drawing.Size(847, 732);
             this.ControlBox = false;
             this.Controls.Add(this.btnImportNota);
             this.Controls.Add(this.btnFechar);

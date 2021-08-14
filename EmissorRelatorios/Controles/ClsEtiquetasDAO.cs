@@ -111,7 +111,7 @@ namespace EmissorRelatorios.Controles
             {
                 using (var con = cnn.conectar().CreateCommand())
                 {
-                    con.CommandText = "select ID_PRODUTO, GTIN, REFERENCIA, PRODUTO, VALOR_VENDA, VALOR_ATACADO from PRODUTOS order by PRODUTO";
+                    con.CommandText = "select ID_PRODUTO, GTIN, REFERENCIA, PRODUTO, ESTOQUE, VALOR_VENDA, VALOR_ATACADO from PRODUTOS order by PRODUTO";
                     da = new FbDataAdapter(con.CommandText, cnn.conectar());
                     da.Fill(ds);
                     return ds;

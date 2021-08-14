@@ -29,7 +29,8 @@ namespace EmissorRelatorios.Views
         public static string path = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
         //@"C:\TSD\HOST\";
         private bool redeOnOff = false;
-        private bool requisitosOK = false;
+        public bool requisitosOK { get; set; } = false;
+
         private string valorReg;
 
         public frmPrincipal()
@@ -40,25 +41,36 @@ namespace EmissorRelatorios.Views
         {
             return requisitosOK;
         }
-        private void verificaVersaoCrystal()
+        public void verificaVersaoCrystal()
         {
             bool exists = false;
             string[] listChaves;
-            RegistryKey rK = Registry.CurrentUser.OpenSubKey("SOFTWARE");
+            RegistryKey rK = Registry.LocalMachine.OpenSubKey("SOFTWARE");
             listChaves = rK.GetSubKeyNames();
             foreach (string item in listChaves)
             {
                 if (item.Equals("SAP BusinessObjects")) { exists = true; }
             }
-            if (exists) { valorReg = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\SAP BusinessObjects\\Crystal Reports for .NET Framework 4.0\\Installer", "BusinessObjects", "N"); }
+            if (Environment.Is64BitOperatingSystem)
+            {
+                if (exists) { valorReg = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\SAP BusinessObjects\\Crystal Reports for .NET Framework 4.0\\Crystal Reports", "CRRuntime64Version", "N"); }
+            }
+            else
+            {
+
+                if (exists) { valorReg = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\Software\\SAP BusinessObjects\\Crystal Reports for .NET Framework 4.0\\Crystal Reports", "CRRuntime32Version", "N"); }
+            }
+
+
+            //if (exists) { valorReg = (string)Registry.GetValue("HKEY_CURRENT_USER\\Software\\SAP BusinessObjects\\Crystal Reports for .NET Framework 4.0\\Installer", "BusinessObjects", "N"); }
             //RegistryKey rK = Registry.LocalMachine.OpenSubKey("SOFTWARE\\SAP BusinessObjects\\Crystal Reports for .NET Framework 4.0\\Crystal Reports");
             //valorReg = (string) rK.GetValue("CR4VSVersion");
 
-            if (exists && valorReg != "1")
+            if (exists && valorReg != "13.0.27")
             {
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    int resposta = clsUtil.MsgBox_Full("Seu sistema não tem os requisitos, deseja instalar agora?", "Atenção");
+                    int resposta = clsUtil.MsgBox_Full("Atenção", "Seu sistema não tem os requisitos, deseja instalar agora?");
                     if (resposta == 1)
                     {
                         try
@@ -106,7 +118,7 @@ namespace EmissorRelatorios.Views
             {
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    int resposta = clsUtil.MsgBox_Full("Seu sistema não tem os requisitos, deseja instalar agora?", "Atenção");
+                    int resposta = clsUtil.MsgBox_Full("Atenção", "Seu sistema não tem os requisitos, deseja instalar agora?");
                     if (resposta == 1)
                     {
                         try
@@ -151,7 +163,7 @@ namespace EmissorRelatorios.Views
                 }
 
             }
-            else if (exists && valorReg.Equals("1"))
+            else if (exists && valorReg.Equals("13.0.27"))
             {
                 requisitosOK = true;
             }
@@ -170,10 +182,13 @@ namespace EmissorRelatorios.Views
           
             if (File.Exists(path + "Conexao.ini"))
             {
+               
+
                 IP_SERVIDOR = Conexao.GetIniValue("CONEXAO", "IP_SERVIDOR", path + "Conexao.ini");
                 PORTA = Conexao.GetIniValue("CONEXAO", "PORTA", path + "Conexao.ini");
                 RETAGUARDA = Conexao.GetIniValue("CONEXAO", "RETAGUARDA", path + "Conexao.ini");
                 strFBconexaoServer = @"User=SYSDBA;Password=masterkey;DataSource=" + IP_SERVIDOR + ";Database=" + RETAGUARDA + ";Port=" + PORTA + ";Dialect=3;Charset=NONE;Role=;Connection lifetime=0;Connection timeout=7;Pooling=True;Packet Size=8192;Server Type=0";
+
             }
             else
             {

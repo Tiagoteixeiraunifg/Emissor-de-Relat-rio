@@ -15,9 +15,13 @@ namespace EmissorRelatorios
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPrincipal());
+            frmPrincipal frmPrin = new frmPrincipal();
+            frmPrin.verificaVersaoCrystal();
+            if (frmPrin.requisitosOK) { Application.Run(new frmPrincipal()); } else { Application.Exit(); }
+           
         }
     }
 }
