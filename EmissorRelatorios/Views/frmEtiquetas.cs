@@ -70,6 +70,7 @@ namespace EmissorRelatorios.Views
             dtPrintView.Columns.Add("VALOR_VENDA", typeof(decimal));
             dtPrintView.Columns.Add("VALOR_ATACADO", typeof(decimal));
             dtPrintView.Columns.Add("QTD", typeof(int));
+            dtPrintView.Columns.Add("UNIDADE_COMECIAL", typeof(string));
         }
         private void LoaddgvProdutos()
         {
@@ -86,6 +87,8 @@ namespace EmissorRelatorios.Views
             dgvProdutos.Columns["REFERENCIA"].Width = 90;
             dgvProdutos.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
             dgvProdutos.Columns["PRODUTO"].Width = 300;
+            dgvProdutos.Columns["UNIDADE_COMECIAL"].HeaderText = "UN";
+            dgvProdutos.Columns["UNIDADE_COMECIAL"].Width = 25;
             dgvProdutos.Columns["ESTOQUE"].HeaderText = "QTD ESTOQUE";
             dgvProdutos.Columns["ESTOQUE"].Width = 65;
             dgvProdutos.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
@@ -125,6 +128,8 @@ namespace EmissorRelatorios.Views
             dgvProdutosPrint.Columns["REFERENCIA"].Width = 90;
             dgvProdutosPrint.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
             dgvProdutosPrint.Columns["PRODUTO"].Width = 260;
+            dgvProdutosPrint.Columns["UNIDADE_COMECIAL"].HeaderText = "UN";
+            dgvProdutosPrint.Columns["UNIDADE_COMECIAL"].Width = 25;
             dgvProdutosPrint.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
             dgvProdutosPrint.Columns["VALOR_VENDA"].Width = 70;
             dgvProdutosPrint.Columns["VALOR_VENDA"].DefaultCellStyle.Format = "C2";
@@ -193,7 +198,7 @@ namespace EmissorRelatorios.Views
             clsProduto.setProduto(this.dgvProdutos["PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString());
             clsProduto.setValorVenda(decimal.Parse(this.dgvProdutos["VALOR_VENDA", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setValorAtacado(decimal.Parse(this.dgvProdutos["VALOR_ATACADO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
-
+            clsProduto.unidade_comercial = this.dgvProdutos["UNIDADE_COMECIAL", this.dgvProdutos.CurrentRow.Index].Value.ToString();
         }
 
         private void inserirNaLista()
@@ -206,14 +211,14 @@ namespace EmissorRelatorios.Views
                 {
                     for (int i = 0; i < int.Parse(nUpQtd.Value.ToString()); i++)
                     {
-                        dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
+                        dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.unidade_comercial);
                     }
-                    dtPrintView.Rows.Add(null,clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(),  clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());
+                    dtPrintView.Rows.Add(null,clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(),  clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade(), clsProduto.unidade_comercial);
                 }
                 else
                 {
-                    dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado());
-                    dtPrintView.Rows.Add(null, clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade());                  
+                    dtsEtiquetas.Tables[0].Rows.Add(clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.unidade_comercial);
+                    dtPrintView.Rows.Add(null, clsProduto.GetIdProduto(), clsProduto.getGtin(), clsProduto.referencia, clsProduto.getProduto(), clsProduto.getValorVenda(), clsProduto.getValorAtacado(), clsProduto.getQuantidade(), clsProduto.unidade_comercial);                  
                 }
                 LoaddgvProdutosPrint();
             }
@@ -240,7 +245,7 @@ namespace EmissorRelatorios.Views
             clsProduto.setProduto(this.dgvProdutos["PRODUTO", this.dgvProdutos.CurrentRow.Index].Value.ToString());
             clsProduto.setValorVenda(decimal.Parse(this.dgvProdutos["VALOR_VENDA", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
             clsProduto.setValorAtacado(decimal.Parse(this.dgvProdutos["VALOR_ATACADO", this.dgvProdutos.CurrentRow.Index].Value.ToString()));
-
+            clsProduto.unidade_comercial = this.dgvProdutos["UNIDADE_COMECIAL", this.dgvProdutos.CurrentRow.Index].Value.ToString();
         }
 
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)

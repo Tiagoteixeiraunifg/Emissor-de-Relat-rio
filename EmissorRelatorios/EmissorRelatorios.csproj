@@ -176,6 +176,13 @@
       <DependentUpon>Etiqueta 2 colunas 40x22mm .rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Relatorios\etiquetas\Etiqueta Para Editar .cs">
+      <DependentUpon>Etiqueta Para Editar .rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Relatorios\etiquetas\Link 85 A4 - 2 .cs">
       <DependentUpon>Link 85 A4 - 2 .rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -384,6 +391,11 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta 2 colunas 40x22mm .cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta Para Editar .rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Etiqueta Para Editar .cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\etiquetas\Link 85 A4 - 2 .rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

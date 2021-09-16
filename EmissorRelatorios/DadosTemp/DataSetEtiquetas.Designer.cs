@@ -291,6 +291,8 @@ namespace EmissorRelatorios.DadosTemp {
             
             private global::System.Data.DataColumn columnVALOR_ATACADO;
             
+            private global::System.Data.DataColumn columnUNIDADE_COMECIAL;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public _0DataTable() {
@@ -374,6 +376,14 @@ namespace EmissorRelatorios.DadosTemp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UNIDADE_COMECIALColumn {
+                get {
+                    return this.columnUNIDADE_COMECIAL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +419,7 @@ namespace EmissorRelatorios.DadosTemp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public _0Row Add_0Row(int ID_PRODUTO, string GTIN, string REFERENCIA, string PRODUTO, decimal VALOR_VENDA, decimal VALOR_ATACADO) {
+            public _0Row Add_0Row(int ID_PRODUTO, string GTIN, string REFERENCIA, string PRODUTO, decimal VALOR_VENDA, decimal VALOR_ATACADO, string UNIDADE_COMECIAL) {
                 _0Row row_0Row = ((_0Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_PRODUTO,
@@ -417,7 +427,8 @@ namespace EmissorRelatorios.DadosTemp {
                         REFERENCIA,
                         PRODUTO,
                         VALOR_VENDA,
-                        VALOR_ATACADO};
+                        VALOR_ATACADO,
+                        UNIDADE_COMECIAL};
                 row_0Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row_0Row);
                 return row_0Row;
@@ -446,6 +457,7 @@ namespace EmissorRelatorios.DadosTemp {
                 this.columnPRODUTO = base.Columns["PRODUTO"];
                 this.columnVALOR_VENDA = base.Columns["VALOR_VENDA"];
                 this.columnVALOR_ATACADO = base.Columns["VALOR_ATACADO"];
+                this.columnUNIDADE_COMECIAL = base.Columns["UNIDADE_COMECIAL"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +475,8 @@ namespace EmissorRelatorios.DadosTemp {
                 base.Columns.Add(this.columnVALOR_VENDA);
                 this.columnVALOR_ATACADO = new global::System.Data.DataColumn("VALOR_ATACADO", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVALOR_ATACADO);
+                this.columnUNIDADE_COMECIAL = new global::System.Data.DataColumn("UNIDADE_COMECIAL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUNIDADE_COMECIAL);
                 this.ExtendedProperties.Add("Generator_TableVarName", "table0");
                 this.ExtendedProperties.Add("Generator_UserTableName", "0");
             }
@@ -703,6 +717,22 @@ namespace EmissorRelatorios.DadosTemp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string UNIDADE_COMECIAL {
+                get {
+                    try {
+                        return ((string)(this[this.table0.UNIDADE_COMECIALColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'UNIDADE_COMECIAL\' na tabela \'0\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.table0.UNIDADE_COMECIALColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsID_PRODUTONull() {
                 return this.IsNull(this.table0.ID_PRODUTOColumn);
             }
@@ -771,6 +801,18 @@ namespace EmissorRelatorios.DadosTemp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetVALOR_ATACADONull() {
                 this[this.table0.VALOR_ATACADOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUNIDADE_COMECIALNull() {
+                return this.IsNull(this.table0.UNIDADE_COMECIALColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUNIDADE_COMECIALNull() {
+                this[this.table0.UNIDADE_COMECIALColumn] = global::System.Convert.DBNull;
             }
         }
         

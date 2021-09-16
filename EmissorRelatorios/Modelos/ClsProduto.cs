@@ -11,11 +11,12 @@ namespace EmissorRelatorios.Modelos
         private int idProduto;
         private string gtin;
         public string referencia { get; set; }
+        public string unidade_comercial { get; set; }
         private string produto;
         private decimal valor_venda;
         private decimal valor_atacado;
         private int quantidade;
-
+        
 
         public void setQuantidade(int valor) {
             this.quantidade = valor;
