@@ -2,21 +2,17 @@
 using EmissorRelatorios.DadosTemp;
 using EmissorRelatorios.Modelos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EmissorRelatorios.Views
 {
     public partial class frmEtiquetas : Form
     {
+        
+        ClsPrincipal principal;
         private DataSet dtProdutos;
         private DataSetEtiquetas dtsEtiquetas;
         private ClsEtiquetasDAO clsEtiquetasDAO;
@@ -32,6 +28,8 @@ namespace EmissorRelatorios.Views
         public frmEtiquetas()
         {
             InitializeComponent();
+            principal = new ClsPrincipal(this);
+            principal.inicializar();
             clsProduto = new ClsProduto();
             bs = new BindingSource();
             dtProdutos = null;
@@ -49,9 +47,11 @@ namespace EmissorRelatorios.Views
         }
 
         public TextBox getTextBox() { return txtFiltro; }
+
+
         public void getTextBox(TextBox txt) { txtFiltro = txt; }
 
-
+        
         private void ajusteDataTableView()
         {
             DataColumn id = new DataColumn();
@@ -86,7 +86,7 @@ namespace EmissorRelatorios.Views
             dgvProdutos.Columns["REFERENCIA"].HeaderText = "REFERÊNCIA";
             dgvProdutos.Columns["REFERENCIA"].Width = 90;
             dgvProdutos.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
-            dgvProdutos.Columns["PRODUTO"].Width = 300;
+            dgvProdutos.Columns["PRODUTO"].Width = 400;
             dgvProdutos.Columns["UNIDADE_COMECIAL"].HeaderText = "UN";
             dgvProdutos.Columns["UNIDADE_COMECIAL"].Width = 25;
             dgvProdutos.Columns["ESTOQUE"].HeaderText = "QTD ESTOQUE";
@@ -127,7 +127,7 @@ namespace EmissorRelatorios.Views
             dgvProdutosPrint.Columns["REFERENCIA"].HeaderText = "REFERÊNCIA";
             dgvProdutosPrint.Columns["REFERENCIA"].Width = 90;
             dgvProdutosPrint.Columns["PRODUTO"].HeaderText = "DESCRIÇÃO";
-            dgvProdutosPrint.Columns["PRODUTO"].Width = 260;
+            dgvProdutosPrint.Columns["PRODUTO"].Width = 350;
             dgvProdutosPrint.Columns["UNIDADE_COMECIAL"].HeaderText = "UN";
             dgvProdutosPrint.Columns["UNIDADE_COMECIAL"].Width = 25;
             dgvProdutosPrint.Columns["VALOR_VENDA"].HeaderText = "PREÇO VENDA";
@@ -150,8 +150,7 @@ namespace EmissorRelatorios.Views
             {
                 if (fi.Extension == ".rpt") {
                     cbSelectEtq.Items.Add(fi.Name.Replace(".rpt",""));
-                }
-                
+                }   
                 //Console.WriteLine(fi.Name);
             }
             if (cbSelectEtq.Items.Count >= 1)
@@ -361,12 +360,13 @@ namespace EmissorRelatorios.Views
 
         private void btnImportNota_Click(object sender, EventArgs e)
         {
-            if (txtFiltro.Text.Length > 1)
+            bool ckb = ckbQtdMuti.Checked;
+            if (txtFiltro.Text.Length > 1 && txtFiltro.Text.Length < 10)
             {
                 importando = true;
                 dtsEtiquetas.Clear();
                 dtPrintView.Clear();
-                dtsEtiquetas = clsEtiquetasDAO.getProdutosNotaCompra(txtFiltro.Text);
+                dtsEtiquetas = clsEtiquetasDAO.getProdutosNotaCompra(txtFiltro.Text, ckb);
                 if (!clsEtiquetasDAO.sucesso)
                 {
                     clsUtil.MsgBox("Não foi possível encontar a  " + clsEtiquetasDAO.retorno, MessageBoxIcon.Information);
@@ -384,6 +384,11 @@ namespace EmissorRelatorios.Views
             {
                 clsUtil.MsgBox("Digite o número da nota no campo de Busca Produto para pesquisar", MessageBoxIcon.Information);
             }
+        }
+
+        private void ckbQtdMuti_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

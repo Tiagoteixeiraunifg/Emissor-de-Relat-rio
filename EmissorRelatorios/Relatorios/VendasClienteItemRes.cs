@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EmissorRelatorios.Relatorios.etiquetas {
+namespace EmissorRelatorios.Relatorios {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Etiqueta_2_Gondola : ReportClass {
+    public class VendasClienteItemRes : ReportClass {
         
-        public Etiqueta_2_Gondola() {
+        public VendasClienteItemRes() {
         }
         
         public override string ResourceName {
             get {
-                return "Etiqueta 2 Gondola.rpt";
+                return "VendasClienteItemRes.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         public override string FullResourceName {
             get {
-                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta 2 Gondola.rpt";
+                return "EmissorRelatorios.Relatorios.VendasClienteItemRes.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,33 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEtiqueta_2_Gondola : Component, ICachedReport {
+    public class CachedVendasClienteItemRes : Component, ICachedReport {
         
-        public CachedEtiqueta_2_Gondola() {
+        public CachedVendasClienteItemRes() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Etiqueta_2_Gondola rpt = new Etiqueta_2_Gondola();
+            VendasClienteItemRes rpt = new VendasClienteItemRes();
             rpt.Site = this.Site;
             return rpt;
         }

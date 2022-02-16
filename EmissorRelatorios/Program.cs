@@ -1,4 +1,5 @@
-﻿using EmissorRelatorios.Views;
+﻿using EmissorRelatorios.Modelos;
+using EmissorRelatorios.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,10 @@ namespace EmissorRelatorios
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            frmPrincipal frmPrin = new frmPrincipal();
-            frmPrin.verificaVersaoCrystal();
-            if (frmPrin.requisitosOK) { Application.Run(new frmPrincipal()); } else { Application.Exit(); }
-           
+            Application.Run(new frmPrincipal());
         }
     }
 }

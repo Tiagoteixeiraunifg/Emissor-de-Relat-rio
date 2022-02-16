@@ -16,14 +16,14 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Etiqueta1_Gondola : ReportClass {
+    public class Etiqueta__Gondola_Varejo : ReportClass {
         
-        public Etiqueta1_Gondola() {
+        public Etiqueta__Gondola_Varejo() {
         }
         
         public override string ResourceName {
             get {
-                return "Etiqueta1 Gondola.rpt";
+                return "Etiqueta  Gondola Varejo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         
         public override string FullResourceName {
             get {
-                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta1 Gondola.rpt";
+                return "EmissorRelatorios.Relatorios.etiquetas.Etiqueta  Gondola Varejo.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedEtiqueta1_Gondola : Component, ICachedReport {
+    public class CachedEtiqueta__Gondola_Varejo : Component, ICachedReport {
         
-        public CachedEtiqueta1_Gondola() {
+        public CachedEtiqueta__Gondola_Varejo() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace EmissorRelatorios.Relatorios.etiquetas {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Etiqueta1_Gondola rpt = new Etiqueta1_Gondola();
+            Etiqueta__Gondola_Varejo rpt = new Etiqueta__Gondola_Varejo();
             rpt.Site = this.Site;
             return rpt;
         }

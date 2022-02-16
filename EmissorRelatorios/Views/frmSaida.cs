@@ -38,6 +38,7 @@ namespace EmissorRelatorios.Views
             dtCliente = clsSaidaDAO.GetClientes();
             if (dtCliente.Rows.Count > 0)
             {
+                
                 cboCliente.CausesValidation = false;
                 cboCliente.DataSource = dtCliente;
                 for (int i = 0; i > dtCliente.Rows.Count; i++) { cboCliente.AutoCompleteCustomSource.Add(dtCliente.Columns["RAZ_SOCIAL"].ToString()); }
@@ -235,6 +236,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendItem_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 1;
             relatorioNome = "VendasVendedorItem.rpt";
             cboCliente.Enabled = false;
@@ -247,6 +249,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVend_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 2;
             relatorioNome = "VendasVendedor.rpt";
             cboCliente.Enabled = false;
@@ -258,6 +261,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendRes_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 2;
             relatorioNome = "VendasVendedorItemResFull.rpt";
             cboCliente.Enabled = false;
@@ -269,6 +273,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendResItem_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 1;
             relatorioNome = "VendasVendedorItemRes.rpt";
             cboCliente.Enabled = false;
@@ -280,6 +285,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendResTodos_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 3;
             relatorioNome = "VendasVendedorItemResTodos.rpt";
             cboCliente.Enabled = false;
@@ -291,6 +297,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendResTodosItem_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 4;
             relatorioNome = "VendasVendedorItemResTodosItem.rpt";
             cboCliente.Enabled = true;
@@ -302,6 +309,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendResTodosCliente_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 5;
             relatorioNome = "VendasVendedorItemResTodosItemClientesFull.rpt";
             cboCliente.Enabled = false;
@@ -313,6 +321,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendDetTodosCliente_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 5;
             relatorioNome = "VendasVendedorItemDetTodosItemClientesFull.rpt";
             cboCliente.Enabled = false;
@@ -324,6 +333,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendDetTodosItem_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 4;
             relatorioNome = "VendasVendedorItemDetTodosItem.rpt";
             cboCliente.Enabled = true;
@@ -335,6 +345,7 @@ namespace EmissorRelatorios.Views
 
         private void rdbProdVendDetGrupo_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 6;
             relatorioNome = "VendasVendedorItemDetGrupo.rpt";
             cboCliente.Enabled = false;
@@ -349,6 +360,7 @@ namespace EmissorRelatorios.Views
 
         private void rbdFechamentoCxDia_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 7;
             relatorioNome = "FechamentoCxDia.rpt";
             cboCliente.Enabled = false;
@@ -360,6 +372,7 @@ namespace EmissorRelatorios.Views
 
         private void rbdFechamentoCx_MouseClick(object sender, MouseEventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 8;
             cboCliente.Enabled = false;
             cboUsuario.Enabled = false;
@@ -377,11 +390,36 @@ namespace EmissorRelatorios.Views
 
         private void rbdFechamentoCxMeioPg_Click(object sender, EventArgs e)
         {
+            daVendas.Clear();
             funcaoDAO = 9;
             cboCliente.Enabled = false;
             cboUsuario.Enabled = false;
             cboVendedor.Enabled = false;
             txtProduto.Enabled = false;
+            cboGrupo.Enabled = false;
+        }
+
+        private void rdbProdCliDetItem_MouseClick(object sender, MouseEventArgs e)
+        {
+            daVendas.Clear();
+            funcaoDAO = 10;
+            relatorioNome = "VendasClienteItem.rpt";
+            cboCliente.Enabled = true;
+            cboUsuario.Enabled = false;
+            cboVendedor.Enabled = false;
+            txtProduto.Enabled = true;
+            cboGrupo.Enabled = false;
+        }
+
+        private void rdbProdCliResItem_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            daVendas.Clear();
+            funcaoDAO = 10;
+            relatorioNome = "VendasClienteItemRes.rpt";
+            cboCliente.Enabled = true;
+            cboUsuario.Enabled = false;
+            cboVendedor.Enabled = false;
+            txtProduto.Enabled = true;
             cboGrupo.Enabled = false;
         }
     }

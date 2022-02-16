@@ -21,7 +21,9 @@ namespace EmissorRelatorios.Views
         private static ClsUtil clsUtil;
         public frmPrintVendas(DataSetVendas ds, string relatorio)
         {
+
             InitializeComponent();
+            this.Text = "Relatório - " + relatorio.Replace(".rpt", "");
             clsUtil = new ClsUtil();
             dsVendas = new DataSetVendas();
             rp = new ReportDocument();

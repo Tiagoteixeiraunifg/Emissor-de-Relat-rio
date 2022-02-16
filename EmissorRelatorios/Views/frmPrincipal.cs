@@ -9,7 +9,8 @@ namespace EmissorRelatorios.Views
 {
     public partial class frmPrincipal : Form
     {
-        ConexaoDAO Conexao = new ConexaoDAO();
+        private ClsPrincipal principal;
+
         ClsUtil clsUtil = new ClsUtil();
         public static string strFBconexaoServer { get; set; }
         private static string IP_SERVIDOR { get; set; }
@@ -28,6 +29,8 @@ namespace EmissorRelatorios.Views
         public frmPrincipal()
         {
             InitializeComponent();
+            principal = new ClsPrincipal(this);
+            principal.inicializar();
         }
         public bool getRequisitosOK()
         {
@@ -172,29 +175,7 @@ namespace EmissorRelatorios.Views
         private void Principal_Load(object sender, EventArgs e)
         {
           
-            if (File.Exists(path + "Conexao.ini"))
-            {
-               
-
-                IP_SERVIDOR = Conexao.GetIniValue("CONEXAO", "IP_SERVIDOR", path + "Conexao.ini");
-                PORTA = Conexao.GetIniValue("CONEXAO", "PORTA", path + "Conexao.ini");
-                RETAGUARDA = Conexao.GetIniValue("CONEXAO", "RETAGUARDA", path + "Conexao.ini");
-                strFBconexaoServer = @"User=SYSDBA;Password=masterkey;DataSource=" + IP_SERVIDOR + ";Database=" + RETAGUARDA + ";Port=" + PORTA + ";Dialect=3;Charset=NONE;Role=;Connection lifetime=0;Connection timeout=7;Pooling=True;Packet Size=8192;Server Type=0";
-
-            }
-            else
-            {
-                MessageBox.Show("Arquivo de configuração (" + path + "Conexao.ini) do Host não encontrado.\nVerifique se o Host está configurado e funcionando nesse computador.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-            //Verifica se as bases de dados estão OK.
-
-            if (!Conexao.Active(true, strFBconexaoServer))
-            {
-                MessageBox.Show("Erro ao conectar com a base de dados do Host.\nVerifique se o Host está configurado e funcionando nesse computador.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
-
+           
         }
 
         private void btnSaidaVenda_MouseClick(object sender, MouseEventArgs e)

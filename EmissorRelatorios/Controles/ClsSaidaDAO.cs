@@ -321,6 +321,33 @@ namespace EmissorRelatorios.Controles
                                 " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
                                 " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV' AND NFCE.ID_CLIENTE IN(SELECT ID_CLIENTE FROM CLIENTES) AND PG.ID = '" + Grupo+"'";
                             break;
+                        case 10:
+                            query = "SELECT NFE.ID AS ID_VENDA, 'NFE' AS TIPO,NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, NFE.ID_VENDEDOR,VDR.DESCRICAO AS VENDEDOR, NFEI.ITEM, NFEI.ID_PRODUTO, PROD.PRODUTO, " +
+                                " NFE.ID_CLIENTE, CLI.RAZ_SOCIAL AS CLIENTE, NFEI.TOTAL_ITEM AS VLRTOTAL, NFEI.QUANTIDADE, NFE.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM PRODUTOS PROD " +
+                                " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                                " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
+                                " INNER JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "'   AND NFE.ID_CLIENTE = " + idCliente + " and NFEI.ID_PRODUTO = " + idProduto + " union " +
+                                " SELECT DAV.ID AS ID_VENDA,'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, DAV.ID_VENDEDOR, VDR.DESCRICAO AS VENDEDOR, DVI.ITEM,DVI.ID_PRODUTO, PROD.PRODUTO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE AS CLIENTE," +
+                                " DVI.VALOR_TOTAL AS VLRTOTAL, DVI.QUANTIDADE, DAV.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM DAV_ITENS DVI " +
+                                " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
+                                " INNER JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' AND DAV.ID_CLIENTE = " + idCliente + " and DVI.ID_PRODUTO = " + idProduto + " union " +
+                                " SELECT NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO,NFCE.ID AS NROCUPOM, USR.USUARIO, NFCE.ID_VENDEDOR,VDR.DESCRICAO AS VENDEDOR, NFCEI.ITEM, NFCEI.ID_PRODUTO, PROD.PRODUTO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE AS CLIENTE," +
+                                " NFCEI.VALOR_TOTAL AS VLRTOTAL, NFCEI.QUANTIDADE, NFCE.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM PRODUTOS PROD " +
+                                " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO" +
+                                " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "'and NFCE.ID_CLIENTE = " + idCliente + " AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV' and NFCEI.ID_PRODUTO = " + idProduto + "";
+                            break;
                         default:
                             break;
                     }
@@ -386,6 +413,16 @@ namespace EmissorRelatorios.Controles
                                 " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
                                 " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' AND DAV.ID_CLIENTE IN(SELECT ID_CLIENTE FROM CLIENTES) AND PG.ID = '" + Grupo + "'";
                             break;
+                        case 10:
+                            query = " SELECT DAV.ID AS ID_VENDA,'DAV' AS TIPO, DAV.ID AS NROCUPOM, USR.USUARIO, DAV.ID_VENDEDOR, VDR.DESCRICAO AS VENDEDOR, DVI.ITEM,DVI.ID_PRODUTO, PROD.PRODUTO, DAV.ID_CLIENTE, DAV.NOME_CLIENTE AS CLIENTE," +
+                                " DVI.VALOR_TOTAL AS VLRTOTAL, DVI.QUANTIDADE, DAV.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM DAV_ITENS DVI " +
+                                " INNER JOIN DAV DAV ON DAV.ID = DVI.ID_DAV " +
+                                " INNER JOIN PRODUTOS PROD ON PROD.ID_PRODUTO = DVI.ID_PRODUTO " +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = DAV.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = DAV.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE DAV.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND DAV.CUPOM_CANCELADO = 'N' AND DAV.ID_CLIENTE = " + idCliente + " and DVI.ID_PRODUTO = " + idProduto + "";
+                            break;
                         default:
                             break;
                     }
@@ -437,6 +474,16 @@ namespace EmissorRelatorios.Controles
                                 " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO " +
                                 " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
                                 " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV' AND NFCE.ID_CLIENTE IN(SELECT ID_CLIENTE FROM CLIENTES) AND PG.ID = '" + Grupo + "'";
+                            break;
+                        case 10:
+                            query = " SELECT NFCE.ID AS ID_VENDA, 'NFCE' AS TIPO,NFCE.ID AS NROCUPOM, USR.USUARIO, NFCE.ID_VENDEDOR,VDR.DESCRICAO AS VENDEDOR, NFCEI.ITEM, NFCEI.ID_PRODUTO, PROD.PRODUTO, NFCE.ID_CLIENTE, NFCE.NOME_CLIENTE AS CLIENTE," +
+                                " NFCEI.VALOR_TOTAL AS VLRTOTAL, NFCEI.QUANTIDADE, NFCE.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM PRODUTOS PROD " +
+                                " INNER JOIN NFCE_ITENS NFCEI ON NFCEI.ID_PRODUTO = PROD.ID_PRODUTO" +
+                                " INNER JOIN NFCE NFCE ON NFCE.ID = NFCEI.ID_NFCE" +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = NFCE.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = NFCE.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE NFCE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "'and NFCE.ID_CLIENTE = " + idCliente + " AND NFCEI.CANCELADO = 'N' and not NFCE.IMPORTACAO_ORIGEM = 'DAV' and NFCEI.ID_PRODUTO = " + idProduto + "";
                             break;
                         default:
                             break;
@@ -511,6 +558,18 @@ namespace EmissorRelatorios.Controles
                                 " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO" +
                                 " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "' AND PG.ID = '" + Grupo + "'";
                             break;
+                        case 10:
+                            query = "SELECT NFE.ID AS ID_VENDA, 'NFE' AS TIPO,NFE.NFE_NUMERO AS NROCUPOM, USR.USUARIO, NFE.ID_VENDEDOR,VDR.DESCRICAO AS VENDEDOR, NFEI.ITEM, NFEI.ID_PRODUTO, PROD.PRODUTO, " +
+                                " NFE.ID_CLIENTE, CLI.RAZ_SOCIAL AS CLIENTE, NFEI.TOTAL_ITEM AS VLRTOTAL, NFEI.QUANTIDADE, NFE.DATA_VENDA AS DATACUPOM, PG.GRUPO FROM PRODUTOS PROD " +
+                                " INNER JOIN NFE_ITENS NFEI ON NFEI.ID_PRODUTO = PROD.ID_PRODUTO " +
+                                " INNER JOIN NFE NFE ON NFE.ID = NFEI.ID_NFE " +
+                                " INNER JOIN CLIENTES CLI ON CLI.ID_CLIENTE = NFE.ID_CLIENTE " +
+                                " INNER JOIN VENDEDOR VDR ON VDR.ID = NFE.ID_VENDEDOR " +
+                                " INNER JOIN USUARIO USR ON USR.ID = NFE.ID_USUARIO" +
+                                " INNER JOIN PRODUTOS_GRUPO PG ON PG.ID = PROD.GRUPO " +
+                                " WHERE NFE.CANCELADO = 'N' AND NFEI.ID_DOC_FISCAL_REF = 0 AND NFE.DATA_VENDA BETWEEN '" + dataIni + "' AND '" + dataFim + "'   AND NFE.ID_CLIENTE = " + idCliente + " and NFEI.ID_PRODUTO = " + idProduto + " ";
+                            break;
+
                         default:
                             break;
                     }

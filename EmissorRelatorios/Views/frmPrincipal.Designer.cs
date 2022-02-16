@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnEtiquetas = new System.Windows.Forms.Button();
             this.btnDecisao = new System.Windows.Forms.Button();
             this.btnEntradaCompra = new System.Windows.Forms.Button();
             this.btnSaidaVenda = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEtiquetas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,54 +55,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Relatórios Gerenciais";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnEtiquetas);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(333, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(337, 371);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ferramentas";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(529, 447);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Developer Tiago Teixeira";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(529, 466);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "WhatsApp (77) 3451 - 9456";
-            // 
-            // btnEtiquetas
-            // 
-            this.btnEtiquetas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEtiquetas.FlatAppearance.BorderSize = 0;
-            this.btnEtiquetas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnEtiquetas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
-            this.btnEtiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEtiquetas.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEtiquetas.Image = ((System.Drawing.Image)(resources.GetObject("btnEtiquetas.Image")));
-            this.btnEtiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEtiquetas.Location = new System.Drawing.Point(6, 21);
-            this.btnEtiquetas.Name = "btnEtiquetas";
-            this.btnEtiquetas.Size = new System.Drawing.Size(301, 82);
-            this.btnEtiquetas.TabIndex = 6;
-            this.btnEtiquetas.Text = "Impressão de Etiquetas";
-            this.btnEtiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEtiquetas.UseVisualStyleBackColor = true;
-            this.btnEtiquetas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnEtiquetas_MouseClick);
             // 
             // btnDecisao
             // 
@@ -159,6 +111,54 @@
             this.btnSaidaVenda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaidaVenda.UseVisualStyleBackColor = true;
             this.btnSaidaVenda.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSaidaVenda_MouseClick);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnEtiquetas);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(333, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(337, 371);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ferramentas";
+            // 
+            // btnEtiquetas
+            // 
+            this.btnEtiquetas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEtiquetas.FlatAppearance.BorderSize = 0;
+            this.btnEtiquetas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnEtiquetas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnEtiquetas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEtiquetas.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEtiquetas.Image = ((System.Drawing.Image)(resources.GetObject("btnEtiquetas.Image")));
+            this.btnEtiquetas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEtiquetas.Location = new System.Drawing.Point(6, 21);
+            this.btnEtiquetas.Name = "btnEtiquetas";
+            this.btnEtiquetas.Size = new System.Drawing.Size(301, 82);
+            this.btnEtiquetas.TabIndex = 6;
+            this.btnEtiquetas.Text = "Impressão de Etiquetas";
+            this.btnEtiquetas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEtiquetas.UseVisualStyleBackColor = true;
+            this.btnEtiquetas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnEtiquetas_MouseClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(529, 447);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Developer Tiago Teixeira";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(529, 466);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(138, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "WhatsApp (77) 3451 - 9456";
             // 
             // pictureBox1
             // 

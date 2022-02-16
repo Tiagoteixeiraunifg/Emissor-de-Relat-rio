@@ -54,10 +54,10 @@ namespace EmissorRelatorios.Modelos
                 if (ctrl is NumericUpDown) { ((NumericUpDown)(ctrl)).Value = ((NumericUpDown)(ctrl)).Minimum; }
                 //if (ctrl is TextBox) { ((TextBox)(ctrl)).Clear(); }
                 if (ctrl is TextBox) { ((TextBox)(ctrl)).Enabled = false; }
-                if (ctrl is ComboBox) { ((ComboBox)(ctrl)).SelectedIndex = -1; }
+                if (ctrl is ComboBox) { ((ComboBox)(ctrl)).SelectedIndex = 0; }
                 if (ctrl is RichTextBox) { ((RichTextBox)(ctrl)).Enabled = false; }
                 if (ctrl is ComboBox) { ((ComboBox)(ctrl)).Enabled = false; }
-                if (ctrl is DateTimePicker) { ((DateTimePicker)(ctrl)).Value = DateTime.Now; }
+                //if (ctrl is DateTimePicker) { ((DateTimePicker)(ctrl)).Value = DateTime.Now; }
                 if (ctrl is DateTimePicker) { ((DateTimePicker)(ctrl)).Enabled = false; }
                 if (ctrl is MaskedTextBox) { ((MaskedTextBox)(ctrl)).Clear(); }
                 if (ctrl is MaskedTextBox) { ((MaskedTextBox)(ctrl)).Mask = ""; }

@@ -22,6 +22,7 @@ namespace EmissorRelatorios.Views
         public frmPrintCompras(DataSetCompras ds, string relatorio)
         {
             InitializeComponent();
+            this.Text = "Relatório - " + relatorio.Replace(".rpt", "");
             dsCompras = new DataSetCompras();
             rp = new ReportDocument();
             dsCompras = ds;

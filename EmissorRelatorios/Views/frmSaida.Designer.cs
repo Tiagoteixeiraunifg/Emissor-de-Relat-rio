@@ -52,6 +52,8 @@
             this.btnGerarRel = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rdbProdCliResItem = new System.Windows.Forms.RadioButton();
+            this.rdbProdCliDetItem = new System.Windows.Forms.RadioButton();
             this.rdbProdVendItem = new System.Windows.Forms.RadioButton();
             this.rdbProdVend = new System.Windows.Forms.RadioButton();
             this.rdbProdVendResItem = new System.Windows.Forms.RadioButton();
@@ -185,6 +187,8 @@
             this.cboGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGrupo.FormattingEnabled = true;
+            this.cboGrupo.Items.AddRange(new object[] {
+            "Selecione"});
             this.cboGrupo.Location = new System.Drawing.Point(6, 25);
             this.cboGrupo.Name = "cboGrupo";
             this.cboGrupo.Size = new System.Drawing.Size(269, 28);
@@ -210,6 +214,8 @@
             this.cboCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCliente.FormattingEnabled = true;
             this.cboCliente.IntegralHeight = false;
+            this.cboCliente.Items.AddRange(new object[] {
+            "Selecione"});
             this.cboCliente.Location = new System.Drawing.Point(6, 25);
             this.cboCliente.Name = "cboCliente";
             this.cboCliente.Size = new System.Drawing.Size(568, 28);
@@ -252,6 +258,8 @@
             this.cboVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVendedor.FormattingEnabled = true;
+            this.cboVendedor.Items.AddRange(new object[] {
+            "Selecione"});
             this.cboVendedor.Location = new System.Drawing.Point(6, 25);
             this.cboVendedor.Name = "cboVendedor";
             this.cboVendedor.Size = new System.Drawing.Size(269, 28);
@@ -322,6 +330,8 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.rdbProdCliResItem);
+            this.flowLayoutPanel1.Controls.Add(this.rdbProdCliDetItem);
             this.flowLayoutPanel1.Controls.Add(this.rdbProdVendItem);
             this.flowLayoutPanel1.Controls.Add(this.rdbProdVend);
             this.flowLayoutPanel1.Controls.Add(this.rdbProdVendResItem);
@@ -340,12 +350,40 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(758, 149);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
+            // rdbProdCliResItem
+            // 
+            this.rdbProdCliResItem.AutoSize = true;
+            this.rdbProdCliResItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbProdCliResItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbProdCliResItem.Location = new System.Drawing.Point(3, 3);
+            this.rdbProdCliResItem.Name = "rdbProdCliResItem";
+            this.rdbProdCliResItem.Size = new System.Drawing.Size(409, 24);
+            this.rdbProdCliResItem.TabIndex = 14;
+            this.rdbProdCliResItem.Text = "Produtos Vendidos Por Cliente Resumido - Item";
+            this.ToolTip.SetToolTip(this.rdbProdCliResItem, "Selecione também um vendedor e em seguida digite o codigo do item a ser buscado.");
+            this.rdbProdCliResItem.UseVisualStyleBackColor = true;
+            this.rdbProdCliResItem.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdbProdCliResItem_MouseClick_1);
+            // 
+            // rdbProdCliDetItem
+            // 
+            this.rdbProdCliDetItem.AutoSize = true;
+            this.rdbProdCliDetItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbProdCliDetItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbProdCliDetItem.Location = new System.Drawing.Point(3, 33);
+            this.rdbProdCliDetItem.Name = "rdbProdCliDetItem";
+            this.rdbProdCliDetItem.Size = new System.Drawing.Size(417, 24);
+            this.rdbProdCliDetItem.TabIndex = 13;
+            this.rdbProdCliDetItem.Text = "Produtos Vendidos Por Cliente  Detalhado - Item";
+            this.ToolTip.SetToolTip(this.rdbProdCliDetItem, "Selecione também um vendedor e em seguida digite o codigo do item a ser buscado.");
+            this.rdbProdCliDetItem.UseVisualStyleBackColor = true;
+            this.rdbProdCliDetItem.MouseClick += new System.Windows.Forms.MouseEventHandler(this.rdbProdCliDetItem_MouseClick);
+            // 
             // rdbProdVendItem
             // 
             this.rdbProdVendItem.AutoSize = true;
             this.rdbProdVendItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendItem.Location = new System.Drawing.Point(3, 3);
+            this.rdbProdVendItem.Location = new System.Drawing.Point(3, 63);
             this.rdbProdVendItem.Name = "rdbProdVendItem";
             this.rdbProdVendItem.Size = new System.Drawing.Size(439, 24);
             this.rdbProdVendItem.TabIndex = 0;
@@ -360,7 +398,7 @@
             this.rdbProdVend.AutoSize = true;
             this.rdbProdVend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVend.Location = new System.Drawing.Point(3, 33);
+            this.rdbProdVend.Location = new System.Drawing.Point(3, 93);
             this.rdbProdVend.Name = "rdbProdVend";
             this.rdbProdVend.Size = new System.Drawing.Size(382, 24);
             this.rdbProdVend.TabIndex = 1;
@@ -375,7 +413,7 @@
             this.rdbProdVendResItem.AutoSize = true;
             this.rdbProdVendResItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendResItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendResItem.Location = new System.Drawing.Point(3, 63);
+            this.rdbProdVendResItem.Location = new System.Drawing.Point(3, 123);
             this.rdbProdVendResItem.Name = "rdbProdVendResItem";
             this.rdbProdVendResItem.Size = new System.Drawing.Size(436, 24);
             this.rdbProdVendResItem.TabIndex = 2;
@@ -389,7 +427,7 @@
             this.rdbProdVendRes.AutoSize = true;
             this.rdbProdVendRes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendRes.Location = new System.Drawing.Point(3, 93);
+            this.rdbProdVendRes.Location = new System.Drawing.Point(3, 153);
             this.rdbProdVendRes.Name = "rdbProdVendRes";
             this.rdbProdVendRes.Size = new System.Drawing.Size(379, 24);
             this.rdbProdVendRes.TabIndex = 3;
@@ -404,7 +442,7 @@
             this.rdbProdVendResTodos.AutoSize = true;
             this.rdbProdVendResTodos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendResTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendResTodos.Location = new System.Drawing.Point(3, 123);
+            this.rdbProdVendResTodos.Location = new System.Drawing.Point(3, 183);
             this.rdbProdVendResTodos.Name = "rdbProdVendResTodos";
             this.rdbProdVendResTodos.Size = new System.Drawing.Size(509, 24);
             this.rdbProdVendResTodos.TabIndex = 4;
@@ -419,7 +457,7 @@
             this.rdbProdVendDetTodosCliente.AutoSize = true;
             this.rdbProdVendDetTodosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendDetTodosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendDetTodosCliente.Location = new System.Drawing.Point(3, 153);
+            this.rdbProdVendDetTodosCliente.Location = new System.Drawing.Point(3, 213);
             this.rdbProdVendDetTodosCliente.Name = "rdbProdVendDetTodosCliente";
             this.rdbProdVendDetTodosCliente.Size = new System.Drawing.Size(635, 24);
             this.rdbProdVendDetTodosCliente.TabIndex = 7;
@@ -435,7 +473,7 @@
             this.rdbProdVendResTodosItem.AutoSize = true;
             this.rdbProdVendResTodosItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendResTodosItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendResTodosItem.Location = new System.Drawing.Point(3, 183);
+            this.rdbProdVendResTodosItem.Location = new System.Drawing.Point(3, 243);
             this.rdbProdVendResTodosItem.Name = "rdbProdVendResTodosItem";
             this.rdbProdVendResTodosItem.Size = new System.Drawing.Size(570, 24);
             this.rdbProdVendResTodosItem.TabIndex = 5;
@@ -450,7 +488,7 @@
             this.rdbProdVendResTodosCliente.AutoSize = true;
             this.rdbProdVendResTodosCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendResTodosCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendResTodosCliente.Location = new System.Drawing.Point(3, 213);
+            this.rdbProdVendResTodosCliente.Location = new System.Drawing.Point(3, 273);
             this.rdbProdVendResTodosCliente.Name = "rdbProdVendResTodosCliente";
             this.rdbProdVendResTodosCliente.Size = new System.Drawing.Size(632, 24);
             this.rdbProdVendResTodosCliente.TabIndex = 6;
@@ -466,7 +504,7 @@
             this.rdbProdVendDetTodosItem.AutoSize = true;
             this.rdbProdVendDetTodosItem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendDetTodosItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendDetTodosItem.Location = new System.Drawing.Point(3, 243);
+            this.rdbProdVendDetTodosItem.Location = new System.Drawing.Point(3, 303);
             this.rdbProdVendDetTodosItem.Name = "rdbProdVendDetTodosItem";
             this.rdbProdVendDetTodosItem.Size = new System.Drawing.Size(573, 24);
             this.rdbProdVendDetTodosItem.TabIndex = 8;
@@ -481,7 +519,7 @@
             this.rdbProdVendDetGrupo.AutoSize = true;
             this.rdbProdVendDetGrupo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbProdVendDetGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbProdVendDetGrupo.Location = new System.Drawing.Point(3, 273);
+            this.rdbProdVendDetGrupo.Location = new System.Drawing.Point(3, 333);
             this.rdbProdVendDetGrupo.Name = "rdbProdVendDetGrupo";
             this.rdbProdVendDetGrupo.Size = new System.Drawing.Size(530, 24);
             this.rdbProdVendDetGrupo.TabIndex = 9;
@@ -496,7 +534,7 @@
             this.rbdFechamentoCxDia.AutoSize = true;
             this.rbdFechamentoCxDia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbdFechamentoCxDia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbdFechamentoCxDia.Location = new System.Drawing.Point(3, 303);
+            this.rbdFechamentoCxDia.Location = new System.Drawing.Point(3, 363);
             this.rbdFechamentoCxDia.Name = "rbdFechamentoCxDia";
             this.rbdFechamentoCxDia.Size = new System.Drawing.Size(387, 24);
             this.rbdFechamentoCxDia.TabIndex = 10;
@@ -511,7 +549,7 @@
             this.rbdFechamentoCx.AutoSize = true;
             this.rbdFechamentoCx.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbdFechamentoCx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbdFechamentoCx.Location = new System.Drawing.Point(3, 333);
+            this.rbdFechamentoCx.Location = new System.Drawing.Point(3, 393);
             this.rbdFechamentoCx.Name = "rbdFechamentoCx";
             this.rbdFechamentoCx.Size = new System.Drawing.Size(446, 24);
             this.rbdFechamentoCx.TabIndex = 11;
@@ -526,7 +564,7 @@
             this.rbdFechamentoCxMeioPg.AutoSize = true;
             this.rbdFechamentoCxMeioPg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbdFechamentoCxMeioPg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbdFechamentoCxMeioPg.Location = new System.Drawing.Point(3, 363);
+            this.rbdFechamentoCxMeioPg.Location = new System.Drawing.Point(3, 423);
             this.rbdFechamentoCxMeioPg.Name = "rbdFechamentoCxMeioPg";
             this.rbdFechamentoCxMeioPg.Size = new System.Drawing.Size(621, 24);
             this.rbdFechamentoCxMeioPg.TabIndex = 12;
@@ -612,5 +650,7 @@
         private System.Windows.Forms.RadioButton rbdFechamentoCxDia;
         private System.Windows.Forms.RadioButton rbdFechamentoCx;
         private System.Windows.Forms.RadioButton rbdFechamentoCxMeioPg;
+        private System.Windows.Forms.RadioButton rdbProdCliDetItem;
+        private System.Windows.Forms.RadioButton rdbProdCliResItem;
     }
 }

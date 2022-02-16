@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>EmissorRelatorios</RootNamespace>
     <AssemblyName>EmissorRelatorios</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -23,14 +23,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -60,7 +60,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>iconePrincipal.ico</ApplicationIcon>
+    <ApplicationIcon>relatorio.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>4ACA87C32D7B10F55DCEF086694ACA3E278A227F</ManifestCertificateThumbprint>
@@ -103,11 +103,6 @@
     </Reference>
     <Reference Include="FirebirdSql.Web.Providers">
       <HintPath>Dependencias\FirebirdSql.Web.Providers.dll</HintPath>
-    </Reference>
-    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>Dependencias\stdole.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -153,6 +148,7 @@
     </Compile>
     <Compile Include="Modelos\ClsCliente.cs" />
     <Compile Include="Modelos\ClsGrupoProduto.cs" />
+    <Compile Include="Modelos\ClsPrincipal.cs" />
     <Compile Include="Modelos\ClsProduto.cs" />
     <Compile Include="Modelos\ClsUsuario.cs" />
     <Compile Include="Modelos\ClsUtil.cs" />
@@ -179,15 +175,15 @@
     <Compile Include="Relatorios\etiquetas\Etiqueta Para Editar .cs">
       <DependentUpon>Etiqueta Para Editar .rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Relatorios\etiquetas\Link 85 A4 - 2 .cs">
       <DependentUpon>Link 85 A4 - 2 .rpt</DependentUpon>
       <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Relatorios\etiquetas\Link 85 A4.cs">
       <AutoGen>True</AutoGen>
@@ -201,10 +197,10 @@
       <DependentUpon>Pimaco 65 A4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\etiquetas\Etiqueta1 Gondola.cs">
+    <Compile Include="Relatorios\etiquetas\Etiqueta  Gondola Varejo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Etiqueta1 Gondola.rpt</DependentUpon>
+      <DependentUpon>Etiqueta  Gondola Varejo.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
@@ -235,10 +231,10 @@
       <DesignTime>True</DesignTime>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\etiquetas\Etiqueta 2 Gondola.cs">
+    <Compile Include="Relatorios\etiquetas\Etiqueta  Gondola Varejo - Atacado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Etiqueta 2 Gondola.rpt</DependentUpon>
+      <DependentUpon>Etiqueta  Gondola Varejo - Atacado.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
@@ -255,6 +251,13 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\VendasClienteItem.cs">
+      <DependentUpon>VendasClienteItem.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Relatorios\VendasVendedorItemDetGrupo.cs">
       <DependentUpon>VendasVendedorItemDetGrupo.rpt</DependentUpon>
@@ -276,6 +279,13 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\VendasClienteItemRes.cs">
+      <DependentUpon>VendasClienteItemRes.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Relatorios\VendasVendedorItemResTodosItemClientesFull.cs">
       <DependentUpon>VendasVendedorItemResTodosItemClientesFull.rpt</DependentUpon>
@@ -412,9 +422,9 @@
       <LastGenOutput>Pimaco 65 A4.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta1 Gondola.rpt">
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta  Gondola Varejo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Etiqueta1 Gondola.cs</LastGenOutput>
+      <LastGenOutput>Etiqueta  Gondola Varejo.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FechamentoCxDiaCupom.rpt">
@@ -436,9 +446,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Etiqueta2 - Cópia .cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta 2 Gondola.rpt">
+    <EmbeddedResource Include="Relatorios\etiquetas\Etiqueta  Gondola Varejo - Atacado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Etiqueta 2 Gondola.cs</LastGenOutput>
+      <LastGenOutput>Etiqueta  Gondola Varejo - Atacado.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FechamentoCxDia.rpt">
@@ -449,6 +459,11 @@
     <EmbeddedResource Include="Relatorios\VendasVendedor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VendasVendedor.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\VendasClienteItem.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VendasClienteItem.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\VendasVendedorItemDetGrupo.rpt">
@@ -464,6 +479,11 @@
     <EmbeddedResource Include="Relatorios\VendasVendedorItemDetTodosItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VendasVendedorItemDetTodosItem.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\VendasClienteItemRes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VendasClienteItemRes.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\VendasVendedorItemResTodosItemClientesFull.rpt">
@@ -533,6 +553,7 @@
     <EmbeddedResource Include="Views\frmSelecaoTipoMov.resx">
       <DependentUpon>frmSelecaoTipoMov.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DadosTemp\DataSetCompras.xsc">
       <DependentUpon>DataSetCompras.xsd</DependentUpon>
     </None>
@@ -567,7 +588,6 @@
       <DependentUpon>DataSetVendas.xsd</DependentUpon>
     </None>
     <None Include="Dependencias\LibreBarcodeEAN13Text-Regular.ttf" />
-    <None Include="EmissorRelatorios_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -581,7 +601,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
@@ -598,6 +629,8 @@
     <Content Include="Dependencias\iconePrincipal.png" />
     <Content Include="Dependencias\stdole.dll" />
     <Content Include="iconePrincipal.ico" />
+    <Content Include="relatorio.ico" />
+    <None Include="Resources\Nfe-entrada.png" />
     <None Include="Resources\LibreBarcodeEAN13Text-Regular.ttf" />
     <None Include="Resources\shopping-cart-add256_24821.png" />
     <None Include="Resources\iconExcluir.png" />

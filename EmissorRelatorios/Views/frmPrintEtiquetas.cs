@@ -15,6 +15,7 @@ namespace EmissorRelatorios.Views
         public frmPrintEtiquetas(DataSetEtiquetas ds, string relatorio)
         {
             InitializeComponent();
+            this.Text = "Relatório de Etiquetas - " + relatorio.Replace(".rpt", "");
             dsEtiquetas = new DataSetEtiquetas();
             rp = new ReportDocument();
             dsEtiquetas = ds;
